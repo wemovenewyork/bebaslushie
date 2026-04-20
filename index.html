@@ -4,6 +4,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beba Slushie | Premium Slushies | BX NYC</title>
 
+    <!-- OG / Social sharing -->
+    <meta property="og:title" content="Beba Slushie | Premium Slushies | BX NYC">
+    <meta property="og:description" content="Handcrafted premium slushies born in the Bronx. La Presión Del Verano. Text 347-375-3948 to order.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="Handcrafted premium slushies born in the Bronx, NYC. 6 signature flavors + Helados de Funditas. Text 347-375-3948 to order.">
+
+    <!-- Emoji favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧊</text></svg>">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
@@ -15,54 +26,30 @@
             theme: {
                 extend: {
                     colors: {
-                        neon: {
-                            pink: '#FF2D95',
-                            cyan: '#00E5FF',
-                            lime: '#C4FF00',
-                            violet: '#8B3FD9',
-                            orange: '#FF5E00',
-                            yellow: '#FFD700'
-                        },
-                        deep: {
-                            900: '#060410',
-                            800: '#0D0920',
-                            700: '#150E2E'
-                        }
+                        neon: { pink:'#FF2D95', cyan:'#00E5FF', lime:'#C4FF00', violet:'#8B3FD9', orange:'#FF5E00', yellow:'#FFD700' },
+                        deep: { 900:'#060410', 800:'#0D0920', 700:'#150E2E' }
                     },
                     fontFamily: {
-                        display: ['"Luckiest Guy"', 'cursive'],
-                        hype: ['"Bebas Neue"', 'sans-serif'],
-                        body: ['"Outfit"', 'sans-serif'],
+                        display:['"Luckiest Guy"','cursive'],
+                        hype:['"Bebas Neue"','sans-serif'],
+                        body:['"Outfit"','sans-serif'],
                     },
                     backgroundImage: {
-                        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)'
+                        'grid-pattern':'linear-gradient(to right,rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,0.03) 1px,transparent 1px)'
                     },
                     animation: {
-                        'marquee': 'marquee 15s linear infinite',
-                        'marquee-reverse': 'marquee-reverse 20s linear infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'blob': 'blob 8s ease-in-out infinite',
-                        'blob2': 'blob 10s ease-in-out infinite 2s',
-                        'blob3': 'blob 12s ease-in-out infinite 4s',
+                        'marquee':'marquee 15s linear infinite',
+                        'marquee-reverse':'marquee-reverse 20s linear infinite',
+                        'float':'float 6s ease-in-out infinite',
+                        'blob':'blob 8s ease-in-out infinite',
+                        'blob2':'blob 10s ease-in-out infinite 2s',
+                        'blob3':'blob 12s ease-in-out infinite 4s',
                     },
                     keyframes: {
-                        marquee: {
-                            '0%': { transform: 'translateX(0%)' },
-                            '100%': { transform: 'translateX(-50%)' },
-                        },
-                        'marquee-reverse': {
-                            '0%': { transform: 'translateX(-50%)' },
-                            '100%': { transform: 'translateX(0%)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0) rotate(-1deg)' },
-                            '50%': { transform: 'translateY(-18px) rotate(1deg)' },
-                        },
-                        blob: {
-                            '0%, 100%': { transform: 'translate(0,0) scale(1)' },
-                            '33%': { transform: 'translate(40px,-30px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px,20px) scale(0.95)' },
-                        }
+                        marquee:{'0%':{transform:'translateX(0%)'},'100%':{transform:'translateX(-50%)'}},
+                        'marquee-reverse':{'0%':{transform:'translateX(-50%)'},'100%':{transform:'translateX(0%)'}},
+                        float:{'0%,100%':{transform:'translateY(0) rotate(-1deg)'},'50%':{transform:'translateY(-18px) rotate(1deg)'}},
+                        blob:{'0%,100%':{transform:'translate(0,0) scale(1)'},'33%':{transform:'translate(40px,-30px) scale(1.1)'},'66%':{transform:'translate(-20px,20px) scale(0.95)'}},
                     }
                 }
             }
@@ -71,200 +58,119 @@
 
     <style>
         * { cursor: none !important; }
+        #cursor { position:fixed;width:18px;height:18px;border-radius:50%;background:#FF2D95;box-shadow:0 0 12px #FF2D95,0 0 24px rgba(255,45,149,.5);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s; }
+        #cursor-ring { position:fixed;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,45,149,.5);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease,width .2s,height .2s,border-color .2s; }
+        body:has(a:hover) #cursor,body:has(button:hover) #cursor { width:28px;height:28px;background:#00E5FF;box-shadow:0 0 16px #00E5FF; }
+        body:has(a:hover) #cursor-ring,body:has(button:hover) #cursor-ring { width:56px;height:56px;border-color:rgba(0,229,255,.5); }
 
-        #cursor {
-            position: fixed;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: #FF2D95;
-            box-shadow: 0 0 12px #FF2D95, 0 0 24px rgba(255,45,149,0.5);
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
-        }
-        #cursor-ring {
-            position: fixed;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255,45,149,0.5);
-            pointer-events: none;
-            z-index: 9998;
-            transform: translate(-50%, -50%);
-            transition: left 0.12s ease, top 0.12s ease, width 0.2s, height 0.2s, border-color 0.2s;
-        }
-        body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 28px; height: 28px; background: #00E5FF; box-shadow: 0 0 16px #00E5FF; }
-        body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 56px; height: 56px; border-color: rgba(0,229,255,0.5); }
+        body { background-color:#060410;color:white;overflow-x:hidden; }
 
-        body {
-            background-color: #060410;
-            color: white;
-            overflow-x: hidden;
-        }
+        .glow-pink { text-shadow:0 0 20px rgba(255,45,149,.7),0 0 50px rgba(255,45,149,.3); }
+        .glow-cyan  { text-shadow:0 0 20px rgba(0,229,255,.7),0 0 50px rgba(0,229,255,.3); }
+        .glow-lime  { text-shadow:0 0 20px rgba(196,255,0,.7); }
+        .text-outline-thick { -webkit-text-stroke:2px rgba(255,255,255,.15);color:transparent; }
 
-        .glow-pink { text-shadow: 0 0 20px rgba(255,45,149,0.7), 0 0 50px rgba(255,45,149,0.3); }
-        .glow-cyan  { text-shadow: 0 0 20px rgba(0,229,255,0.7), 0 0 50px rgba(0,229,255,0.3); }
-        .glow-lime  { text-shadow: 0 0 20px rgba(196,255,0,0.7); }
-        .text-outline-thick { -webkit-text-stroke: 2px rgba(255,255,255,0.15); color: transparent; }
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:#060410; }
+        ::-webkit-scrollbar-thumb { background:#FF2D95;border-radius:3px; }
+        .hide-scrollbar::-webkit-scrollbar { display:none; }
+        .hide-scrollbar { -ms-overflow-style:none;scrollbar-width:none; }
 
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #060410; }
-        ::-webkit-scrollbar-thumb { background: #FF2D95; border-radius: 3px; }
+        .glass-card { background:rgba(255,255,255,.03);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);transition:all .4s cubic-bezier(.23,1,.32,1); }
+        .glass-card:hover { background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15);transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.4); }
 
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .reveal { opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease; }
+        .reveal.visible { opacity:1;transform:translateY(0); }
+        .reveal-delay-1 { transition-delay:.1s; }
+        .reveal-delay-2 { transition-delay:.2s; }
+        .reveal-delay-3 { transition-delay:.3s; }
+        .reveal-delay-4 { transition-delay:.4s; }
+        .reveal-delay-5 { transition-delay:.5s; }
 
-        /* Glassmorphism cards */
-        .glass-card {
-            background: rgba(255,255,255,0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.08);
-            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
-        }
-        .glass-card:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.15);
-            transform: translateY(-6px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-        }
+        .gradient-border { position:relative; }
+        .gradient-border::before { content:'';position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(135deg,#FF2D95,#00E5FF,#C4FF00,#FF2D95);background-size:300% 300%;animation:gradient-shift 4s ease infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .3s; }
+        .gradient-border:hover::before { opacity:1; }
+        @keyframes gradient-shift { 0%,100%{background-position:0% 50%}50%{background-position:100% 50%} }
 
-        /* Scroll reveal */
-        .reveal {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-        .reveal-delay-4 { transition-delay: 0.4s; }
-        .reveal-delay-5 { transition-delay: 0.5s; }
+        .divider { height:1px;background:linear-gradient(to right,transparent,rgba(255,45,149,.4),rgba(0,229,255,.4),transparent); }
 
-        /* Animated gradient border */
-        .gradient-border {
-            position: relative;
-        }
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            inset: -1px;
-            border-radius: inherit;
-            padding: 1px;
-            background: linear-gradient(135deg, #FF2D95, #00E5FF, #C4FF00, #FF2D95);
-            background-size: 300% 300%;
-            animation: gradient-shift 4s ease infinite;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .gradient-border:hover::before { opacity: 1; }
+        .slushie-texture { background-image:url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.2'/%3E%3C/svg%3E");mix-blend-mode:overlay; }
 
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        /* Section divider */
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,45,149,0.4), rgba(0,229,255,0.4), transparent);
-        }
-
-        .slushie-texture {
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.2'/%3E%3C/svg%3E");
-            mix-blend-mode: overlay;
-        }
+        /* Mobile menu */
+        #mobile-menu { display:none; }
+        #mobile-menu.open { display:block; }
     </style>
 </head>
 <body class="font-body antialiased selection:bg-neon-pink selection:text-white">
 
-    <!-- Custom cursor -->
     <div id="cursor"></div>
     <div id="cursor-ring"></div>
 
-    <!-- Nav -->
-    <nav class="fixed w-full z-40 top-0 bg-deep-900/70 backdrop-blur-2xl border-b border-white/5">
+    <!-- ── NAV ── -->
+    <nav class="fixed w-full z-40 top-0 bg-deep-900/80 backdrop-blur-2xl border-b border-white/5">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <a href="#" class="flex-shrink-0">
-                    <img src="logo.png" alt="Beba Slushie" class="h-14 w-auto">
-                </a>
+                <a href="#"><img src="logo.png" alt="Beba Slushie" class="h-14 w-auto"></a>
 
-                <div class="hidden lg:flex items-center space-x-10">
-                    <a href="#menu" class="font-hype text-xl tracking-widest text-white/50 hover:text-white transition-colors relative group">
-                        MENU
-                        <span class="absolute -bottom-1 left-0 w-full h-px bg-neon-pink scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                    </a>
-                    <a href="#funditas" class="font-hype text-xl tracking-widest text-white/50 hover:text-white transition-colors relative group">
-                        FUNDITAS
-                        <span class="absolute -bottom-1 left-0 w-full h-px bg-neon-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                    </a>
-                    <a href="#vibe" class="font-hype text-xl tracking-widest text-white/50 hover:text-white transition-colors relative group">
-                        THE VIBE
-                        <span class="absolute -bottom-1 left-0 w-full h-px bg-neon-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
-                    </a>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#menu"      class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">MENU<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-pink scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
+                    <a href="#funditas"  class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">FUNDITAS<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
+                    <a href="#how"       class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">HOW IT WORKS<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
+                    <a href="#catering"  class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">CATERING<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-violet scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
+                    <a href="#findus"    class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">FIND US<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-orange scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
                 </div>
 
                 <div class="hidden md:flex items-center gap-4">
-                    <a href="https://instagram.com/beba.slushies" class="text-white/40 hover:text-neon-pink transition-colors">
-                        <i class="ph-fill ph-instagram-logo text-2xl"></i>
-                    </a>
-                    <a href="#order" class="px-7 py-2.5 font-hype text-xl tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 hover:shadow-[0_0_24px_rgba(255,45,149,0.6)] hover:-translate-y-0.5">
-                        ORDER NOW
-                    </a>
+                    <a href="tel:3473753948" class="font-hype text-lg tracking-widest text-white/40 hover:text-neon-cyan transition-colors">347-375-3948</a>
+                    <a href="#order" class="px-6 py-2.5 font-hype text-lg tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 hover:shadow-[0_0_24px_rgba(255,45,149,.6)] hover:-translate-y-0.5">ORDER NOW</a>
                 </div>
 
-                <div class="lg:hidden">
-                    <button class="text-white/60 hover:text-neon-pink">
-                        <i class="ph ph-list text-3xl"></i>
-                    </button>
-                </div>
+                <button id="menu-btn" class="lg:hidden text-white/60 hover:text-neon-pink p-2">
+                    <i id="menu-icon" class="ph ph-list text-3xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="lg:hidden bg-deep-900/98 backdrop-blur-2xl border-t border-white/5 px-6 py-6">
+            <div class="flex flex-col gap-5">
+                <a href="#menu"     onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-pink transition-colors">MENU</a>
+                <a href="#funditas" onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-cyan transition-colors">FUNDITAS</a>
+                <a href="#how"      onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-lime transition-colors">HOW IT WORKS</a>
+                <a href="#catering" onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-violet transition-colors">CATERING</a>
+                <a href="#findus"   onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-orange transition-colors">FIND US</a>
+                <div class="divider my-2"></div>
+                <a href="tel:3473753948" class="flex items-center gap-3 font-hype text-2xl tracking-widest text-neon-cyan">
+                    <i class="ph-fill ph-phone text-xl"></i> 347-375-3948
+                </a>
+                <a href="#order" onclick="closeMobileMenu()" class="w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink">ORDER NOW</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
+    <!-- ── HERO ── -->
     <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Animated bg blobs -->
         <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-pink/15 rounded-full blur-[140px] animate-blob pointer-events-none"></div>
         <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[120px] animate-blob2 pointer-events-none"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-violet/8 rounded-full blur-[100px] animate-blob3 pointer-events-none"></div>
-        <!-- Grid -->
         <div class="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] pointer-events-none"></div>
-        <!-- Fade to bottom -->
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-deep-900/30 to-deep-900 pointer-events-none"></div>
 
         <div class="relative z-10 flex flex-col items-center text-center px-4 gap-8">
-            <img src="logo.png" alt="Beba Slushie" class="w-64 sm:w-80 md:w-[420px] animate-float drop-shadow-[0_0_60px_rgba(255,45,149,0.4)]">
-
-            <h2 class="font-hype text-4xl sm:text-5xl md:text-7xl tracking-[0.15em] flex flex-wrap justify-center items-center gap-3 sm:gap-6">
+            <img src="logo.png" alt="Beba Slushie" class="w-64 sm:w-80 md:w-[420px] animate-float drop-shadow-[0_0_60px_rgba(255,45,149,.4)]">
+            <h2 class="font-hype text-4xl sm:text-5xl md:text-7xl tracking-[.15em] flex flex-wrap justify-center items-center gap-3 sm:gap-6">
                 <span class="text-white glow-pink">CHILL.</span>
                 <span class="text-neon-cyan glow-cyan">SIP.</span>
                 <span class="text-neon-lime glow-lime">TURN UP.</span>
             </h2>
-
-            <p class="font-body text-base sm:text-lg text-white/40 tracking-[0.25em] uppercase">
-                La Presión Del Verano &nbsp;·&nbsp; BX, NYC
-            </p>
-
+            <p class="font-body text-base sm:text-lg text-white/40 tracking-[.25em] uppercase">La Presión Del Verano &nbsp;·&nbsp; BX, NYC</p>
             <a href="#menu" class="mt-4 group flex items-center gap-2 font-hype text-xl tracking-widest text-white/60 hover:text-white transition-colors">
-                EXPLORE THE MENU
-                <i class="ph ph-arrow-down text-xl group-hover:translate-y-1 transition-transform"></i>
+                EXPLORE THE MENU <i class="ph ph-arrow-down text-xl group-hover:translate-y-1 transition-transform"></i>
             </a>
         </div>
     </header>
 
-    <!-- Marquee 1 -->
+    <!-- ── MARQUEES ── -->
     <div class="relative w-full overflow-hidden bg-neon-pink py-3.5 border-y border-white/10 transform -rotate-1 z-20">
         <div class="flex w-[200%] animate-marquee">
             <div class="flex items-center w-1/2 min-w-max">
@@ -285,45 +191,44 @@
             </div>
         </div>
     </div>
-
-    <!-- Marquee 2 -->
     <div class="relative w-full overflow-hidden bg-neon-cyan py-3 border-b border-white/10 transform rotate-1 z-10 -mt-1">
         <div class="flex w-[200%] animate-marquee-reverse">
             <div class="flex items-center w-1/2 min-w-max">
-                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">100% GOOD VIBES</span>
-                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
-                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">ICE COLD</span>
-                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
-                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">TURN UP THE HEAT</span>
-                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[.2em] mx-6">100% GOOD VIBES</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[.2em] mx-6">ICE COLD</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[.2em] mx-6">TURN UP THE HEAT</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[.2em] mx-6">///</span>
             </div>
             <div class="flex items-center w-1/2 min-w-max">
-                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">100% GOOD VIBES</span>
-                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
-                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">ICE COLD</span>
-                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
-                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">TURN UP THE HEAT</span>
-                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[.2em] mx-6">100% GOOD VIBES</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[.2em] mx-6">ICE COLD</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[.2em] mx-6">TURN UP THE HEAT</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[.2em] mx-6">///</span>
             </div>
         </div>
     </div>
 
-    <!-- Menu -->
+    <!-- ── MENU ── -->
     <section id="menu" class="py-32 relative">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 reveal">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-8 reveal">
                 <div>
-                    <p class="font-hype text-sm tracking-[0.4em] text-neon-pink mb-3">— PICK YOUR FLAVOR —</p>
+                    <p class="font-hype text-sm tracking-[.4em] text-neon-pink mb-3">— PICK YOUR FLAVOR —</p>
                     <h2 class="font-display text-6xl md:text-8xl text-white leading-none">SIGNATURE</h2>
                     <h2 class="font-display text-6xl md:text-8xl text-outline-thick glow-cyan leading-none">FLAVORS</h2>
                 </div>
-                <p class="font-body text-white/40 font-light max-w-xs text-right mt-4 md:mt-0 leading-relaxed">
-                    Handcrafted slushies made with premium ingredients and fresh flavors.
-                </p>
+                <div class="text-right mt-4 md:mt-0">
+                    <p class="font-body text-white/40 font-light max-w-xs leading-relaxed">Handcrafted slushies made with premium ingredients and fresh flavors.</p>
+                    <!-- UPDATE: replace with your actual price -->
+                    <p class="font-hype text-3xl text-neon-lime tracking-widest mt-3">TEXT FOR PRICING</p>
+                    <a href="sms:3473753948" class="font-body text-sm text-white/30 hover:text-neon-pink transition-colors tracking-widest uppercase">347-375-3948 →</a>
+                </div>
             </div>
-
-            <div class="divider mb-16"></div>
+            <div class="divider mb-14"></div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
@@ -333,9 +238,7 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">PIÑA<br>PERREO</h3>
-                            <div class="w-10 h-10 rounded-full border border-neon-orange/40 flex items-center justify-center text-neon-orange bg-neon-orange/10">
-                                <i class="ph-fill ph-sparkle text-lg"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-full border border-neon-orange/40 flex items-center justify-center text-neon-orange bg-neon-orange/10"><i class="ph-fill ph-sparkle text-lg"></i></div>
                         </div>
                         <div class="w-12 h-px bg-neon-orange mb-6"></div>
                         <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
@@ -344,9 +247,7 @@
                             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>Tajín Rim</li>
                         </ul>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
-                        <i class="ph-fill ph-drop text-[220px] text-neon-orange"></i>
-                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-neon-orange"></i></div>
                 </div>
 
                 <!-- Mango Mamacita -->
@@ -355,9 +256,7 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">MANGO<br>MAMACITA</h3>
-                            <div class="w-10 h-10 rounded-full border border-neon-yellow/40 flex items-center justify-center text-neon-yellow bg-neon-yellow/10">
-                                <i class="ph-fill ph-fire text-lg"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-full border border-neon-yellow/40 flex items-center justify-center text-neon-yellow bg-neon-yellow/10"><i class="ph-fill ph-fire text-lg"></i></div>
                         </div>
                         <div class="w-12 h-px bg-neon-yellow mb-6"></div>
                         <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
@@ -366,9 +265,7 @@
                             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Chamoy</li>
                         </ul>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
-                        <i class="ph-fill ph-drop text-[220px] text-neon-yellow"></i>
-                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-neon-yellow"></i></div>
                 </div>
 
                 <!-- Blue Bandida -->
@@ -377,9 +274,7 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">BLUE<br>BANDIDA</h3>
-                            <div class="w-10 h-10 rounded-full border border-neon-cyan/40 flex items-center justify-center text-neon-cyan bg-neon-cyan/10">
-                                <i class="ph-fill ph-snowflake text-lg"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-full border border-neon-cyan/40 flex items-center justify-center text-neon-cyan bg-neon-cyan/10"><i class="ph-fill ph-snowflake text-lg"></i></div>
                         </div>
                         <div class="w-12 h-px bg-neon-cyan mb-6"></div>
                         <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
@@ -388,9 +283,7 @@
                             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-yellow-300"></span>Lemon</li>
                         </ul>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
-                        <i class="ph-fill ph-drop text-[220px] text-neon-cyan"></i>
-                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-neon-cyan"></i></div>
                 </div>
 
                 <!-- Fresa Fuego -->
@@ -399,9 +292,7 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">FRESA<br>FUEGO</h3>
-                            <div class="w-10 h-10 rounded-full border border-neon-pink/40 flex items-center justify-center text-neon-pink bg-neon-pink/10">
-                                <i class="ph-fill ph-heart text-lg"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-full border border-neon-pink/40 flex items-center justify-center text-neon-pink bg-neon-pink/10"><i class="ph-fill ph-heart text-lg"></i></div>
                         </div>
                         <div class="w-12 h-px bg-neon-pink mb-6"></div>
                         <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
@@ -410,9 +301,7 @@
                             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-lime"></span>Lime</li>
                         </ul>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
-                        <i class="ph-fill ph-drop text-[220px] text-neon-pink"></i>
-                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-neon-pink"></i></div>
                 </div>
 
                 <!-- Parcha Party -->
@@ -421,9 +310,7 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">PARCHA<br>PARTY</h3>
-                            <div class="w-10 h-10 rounded-full border border-neon-violet/40 flex items-center justify-center text-neon-violet bg-neon-violet/10">
-                                <i class="ph-fill ph-flower-lotus text-lg"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-full border border-neon-violet/40 flex items-center justify-center text-neon-violet bg-neon-violet/10"><i class="ph-fill ph-flower-lotus text-lg"></i></div>
                         </div>
                         <div class="w-12 h-px bg-neon-violet mb-6"></div>
                         <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
@@ -432,9 +319,7 @@
                             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>Mint</li>
                         </ul>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
-                        <i class="ph-fill ph-drop text-[220px] text-neon-violet"></i>
-                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-neon-violet"></i></div>
                 </div>
 
                 <!-- Coco Loco -->
@@ -443,9 +328,7 @@
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">COCO<br>LOCO</h3>
-                            <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 bg-white/5">
-                                <i class="ph-fill ph-cloud text-lg"></i>
-                            </div>
+                            <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 bg-white/5"><i class="ph-fill ph-cloud text-lg"></i></div>
                         </div>
                         <div class="w-12 h-px bg-white/30 mb-6"></div>
                         <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
@@ -454,26 +337,70 @@
                             <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue-200"></span>Cream</li>
                         </ul>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
-                        <i class="ph-fill ph-drop text-[220px] text-white"></i>
-                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-white"></i></div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Funditas -->
+    <!-- ── HOW IT WORKS ── -->
+    <section id="how" class="py-24 relative">
+        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
+
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <p class="font-hype text-sm tracking-[.4em] text-neon-cyan mb-3">— SIMPLE AS THAT —</p>
+                <h2 class="font-display text-5xl md:text-7xl text-white leading-none">HOW TO<br><span class="text-neon-pink glow-pink">ORDER</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-8 text-center relative reveal reveal-delay-1">
+                    <div class="w-16 h-16 rounded-full bg-neon-pink/10 border border-neon-pink/30 flex items-center justify-center mx-auto mb-6">
+                        <i class="ph-fill ph-chat-circle-text text-3xl text-neon-pink"></i>
+                    </div>
+                    <div class="font-hype text-6xl text-white/10 mb-2">01</div>
+                    <h3 class="font-hype text-2xl tracking-widest text-white mb-3">TEXT US</h3>
+                    <p class="font-body text-white/50 leading-relaxed">Send a text to <a href="sms:3473753948" class="text-neon-pink hover:text-white transition-colors">347-375-3948</a> with your flavor and how many you want.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 text-center relative reveal reveal-delay-2">
+                    <div class="w-16 h-16 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center mx-auto mb-6">
+                        <i class="ph-fill ph-check-circle text-3xl text-neon-cyan"></i>
+                    </div>
+                    <div class="font-hype text-6xl text-white/10 mb-2">02</div>
+                    <h3 class="font-hype text-2xl tracking-widest text-white mb-3">WE CONFIRM</h3>
+                    <p class="font-body text-white/50 leading-relaxed">We'll confirm your order and let you know when and where to pick up. Quick reply, always.</p>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 text-center relative reveal reveal-delay-3">
+                    <div class="w-16 h-16 rounded-full bg-neon-lime/10 border border-neon-lime/30 flex items-center justify-center mx-auto mb-6">
+                        <i class="ph-fill ph-hand-waving text-3xl text-neon-lime"></i>
+                    </div>
+                    <div class="font-hype text-6xl text-white/10 mb-2">03</div>
+                    <h3 class="font-hype text-2xl tracking-widest text-white mb-3">COME GET IT</h3>
+                    <p class="font-body text-white/50 leading-relaxed">Pull up, grab your slushie, and turn up. It's that easy. Cash &amp; Zelle accepted.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center reveal reveal-delay-4">
+                <a href="sms:3473753948" class="inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-cyan px-10 py-4 hover:bg-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,229,255,.5)] hover:-translate-y-0.5">
+                    <i class="ph-fill ph-device-mobile text-2xl"></i> TEXT 347-375-3948
+                </a>
+            </div>
+        </div>
+        <div class="divider absolute bottom-0 inset-x-0"></div>
+    </section>
+
+    <!-- ── FUNDITAS ── -->
     <section id="funditas" class="py-24 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
-        <div class="divider absolute top-0 inset-x-0"></div>
-        <div class="divider absolute bottom-0 inset-x-0"></div>
 
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-
             <div class="flex flex-col md:flex-row items-end justify-between gap-8 mb-12 reveal">
                 <div>
-                    <p class="font-hype text-sm tracking-[0.4em] text-neon-cyan mb-3">— GRAB &amp; GO —</p>
+                    <p class="font-hype text-sm tracking-[.4em] text-neon-cyan mb-3">— GRAB &amp; GO —</p>
                     <h2 class="font-display text-5xl md:text-7xl text-white leading-none">HELADOS DE</h2>
                     <h2 class="font-display text-5xl md:text-7xl text-neon-pink glow-pink leading-none">FUNDITAS</h2>
                 </div>
@@ -490,67 +417,252 @@
                 </div>
             </div>
 
-            <!-- Funditas flyer -->
             <div class="flex justify-center mb-14 reveal reveal-delay-1">
-                <img src="funditas-flyer.png" alt="Helados de Funditas — $3 each, 2 for $5"
-                    class="w-full max-w-sm sm:max-w-md rounded-3xl shadow-[0_0_60px_rgba(255,45,149,0.2)] border border-white/5">
+                <img src="funditas-flyer.png" alt="Helados de Funditas — $3 each, 2 for $5" class="w-full max-w-sm sm:max-w-md rounded-3xl shadow-[0_0_60px_rgba(255,45,149,.2)] border border-white/5">
             </div>
 
-            <!-- Fundita bags scroll -->
             <div class="w-full overflow-x-auto hide-scrollbar pb-8 pt-2">
                 <div class="flex gap-8 w-max mx-auto">
-
                     <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-1">
-                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#ff0055] to-[#80002a] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#ff0055] to-[#80002a] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,.5)] group-hover:-translate-y-4 transition-transform duration-300">
                             <div class="absolute inset-0 slushie-texture"></div>
                             <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
                         <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-neon-pink transition-colors">STRAWBERRY</p>
                     </div>
-
                     <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-2">
-                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#ff8c00] to-[#995400] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#ff8c00] to-[#995400] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,.5)] group-hover:-translate-y-4 transition-transform duration-300">
                             <div class="absolute inset-0 slushie-texture"></div>
                             <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
                         <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-[#ff8c00] transition-colors">MANGO</p>
                     </div>
-
                     <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-3">
-                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#00E5FF] to-[#0055ff] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_0_40px_rgba(0,229,255,0.15)] transform group-hover:-translate-y-4 transition-all duration-400">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#00E5FF] to-[#0055ff] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_0_40px_rgba(0,229,255,.15)] group-hover:-translate-y-4 transition-transform duration-300">
                             <div class="absolute inset-0 slushie-texture"></div>
                             <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
                         <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-neon-cyan transition-colors">BLUE RASPBERRY</p>
                     </div>
-
                     <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-4">
-                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#8B3FD9] to-[#4a1c7a] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#8B3FD9] to-[#4a1c7a] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,.5)] group-hover:-translate-y-4 transition-transform duration-300">
                             <div class="absolute inset-0 slushie-texture"></div>
                             <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
                         <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-neon-violet transition-colors">PASSIONFRUIT</p>
                     </div>
-
                     <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-5">
-                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#e8e8e8] to-[#999] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#e8e8e8] to-[#999] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,.5)] group-hover:-translate-y-4 transition-transform duration-300">
                             <div class="absolute inset-0 slushie-texture"></div>
                             <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-black/10 rounded-full blur-sm"></div>
                             <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-black/20 rounded-full"></div>
                         </div>
                         <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-white transition-colors">COCONUT</p>
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Vibe -->
+    <!-- ── FIND US / HOURS ── -->
+    <section id="findus" class="py-24 relative">
+        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-deep-800 via-deep-900 to-deep-800 pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-lime/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <p class="font-hype text-sm tracking-[.4em] text-neon-lime mb-3">— COME FIND US —</p>
+                <h2 class="font-display text-5xl md:text-7xl text-white leading-none">FIND US &<br><span class="text-neon-cyan glow-cyan">HOURS</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-1">
+                    <div class="w-12 h-12 rounded-full bg-neon-pink/10 border border-neon-pink/30 flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-map-pin text-2xl text-neon-pink"></i>
+                    </div>
+                    <h3 class="font-hype text-xl tracking-widest text-white mb-4">LOCATION</h3>
+                    <div class="divider mb-4"></div>
+                    <!-- UPDATE: replace with your actual neighborhood/corner -->
+                    <p class="font-body text-white/50 leading-relaxed">The Bronx, NYC<br><span class="text-white/30 text-sm">Follow us on IG for current pop-up spots</span></p>
+                    <a href="https://instagram.com/beba.slushies" class="mt-4 inline-flex items-center gap-2 font-hype text-lg tracking-widest text-neon-pink hover:text-white transition-colors">
+                        <i class="ph-fill ph-instagram-logo"></i> @BEBA.SLUSHIES
+                    </a>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-2">
+                    <div class="w-12 h-12 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-clock text-2xl text-neon-cyan"></i>
+                    </div>
+                    <h3 class="font-hype text-xl tracking-widest text-white mb-4">HOURS</h3>
+                    <div class="divider mb-4"></div>
+                    <!-- UPDATE: replace with your actual hours -->
+                    <div class="space-y-3 font-body text-white/50">
+                        <div class="flex justify-between"><span>Friday</span><span class="text-white/70">12PM – 8PM</span></div>
+                        <div class="flex justify-between"><span>Saturday</span><span class="text-white/70">12PM – 9PM</span></div>
+                        <div class="flex justify-between"><span>Sunday</span><span class="text-white/70">12PM – 7PM</span></div>
+                        <div class="flex justify-between text-white/30 text-sm pt-1 border-t border-white/5"><span>Mon – Thu</span><span>By request</span></div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-8 reveal reveal-delay-3">
+                    <div class="w-12 h-12 rounded-full bg-neon-lime/10 border border-neon-lime/30 flex items-center justify-center mb-6">
+                        <i class="ph-fill ph-phone text-2xl text-neon-lime"></i>
+                    </div>
+                    <h3 class="font-hype text-xl tracking-widest text-white mb-4">CONTACT</h3>
+                    <div class="divider mb-4"></div>
+                    <div class="space-y-4">
+                        <a href="tel:3473753948" class="flex items-center gap-3 font-hype text-2xl tracking-widest text-white hover:text-neon-lime transition-colors">
+                            <i class="ph-fill ph-phone text-neon-lime"></i> 347-375-3948
+                        </a>
+                        <a href="sms:3473753948" class="flex items-center gap-3 font-body text-base text-white/50 hover:text-neon-cyan transition-colors">
+                            <i class="ph-fill ph-chat-circle text-neon-cyan"></i> Text to order
+                        </a>
+                        <a href="https://instagram.com/beba.slushies" class="flex items-center gap-3 font-body text-base text-white/50 hover:text-neon-pink transition-colors">
+                            <i class="ph-fill ph-instagram-logo text-neon-pink"></i> DM on Instagram
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="divider absolute bottom-0 inset-x-0"></div>
+    </section>
+
+    <!-- ── CATERING & EVENTS ── -->
+    <section id="catering" class="py-24 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-[600px] h-[600px] bg-neon-violet/8 rounded-full blur-[150px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-0 w-[500px] h-[500px] bg-neon-pink/8 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+
+                <div class="reveal">
+                    <p class="font-hype text-sm tracking-[.4em] text-neon-violet mb-4">— WE COME TO YOU —</p>
+                    <h2 class="font-display text-5xl md:text-7xl text-white leading-none mb-8">CATERING &<br><span class="text-neon-violet">EVENTS</span></h2>
+                    <div class="space-y-5 font-body text-lg text-white/50 leading-relaxed">
+                        <p class="pl-5 border-l border-neon-violet/50">
+                            Bringing the Beba Slushie experience to your event. Block parties, birthdays, quinceañeras, cookouts, corporate events — we set up and serve the whole thing.
+                        </p>
+                        <p>Custom flavors, branded cups, and full setup available. We handle the slushies, you handle the good times.</p>
+                    </div>
+                    <a href="sms:3473753948" class="mt-10 inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-violet px-10 py-4 hover:bg-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,63,217,.5)] hover:-translate-y-0.5">
+                        <i class="ph-fill ph-calendar text-2xl"></i> BOOK AN EVENT
+                    </a>
+                </div>
+
+                <div class="reveal reveal-delay-2">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <i class="ph-fill ph-confetti text-4xl text-neon-pink mb-3"></i>
+                            <p class="font-hype text-lg tracking-widest text-white">BIRTHDAYS</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <i class="ph-fill ph-music-notes text-4xl text-neon-cyan mb-3"></i>
+                            <p class="font-hype text-lg tracking-widest text-white">BLOCK PARTIES</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <i class="ph-fill ph-buildings text-4xl text-neon-lime mb-3"></i>
+                            <p class="font-hype text-lg tracking-widest text-white">CORPORATE</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center">
+                            <i class="ph-fill ph-star text-4xl text-neon-violet mb-3"></i>
+                            <p class="font-hype text-lg tracking-widest text-white">QUINCEAÑERAS</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-6 text-center col-span-2">
+                            <i class="ph-fill ph-plus text-4xl text-neon-orange mb-3"></i>
+                            <p class="font-hype text-lg tracking-widest text-white">ANY OCCASION</p>
+                            <p class="font-body text-sm text-white/40 mt-1">Text us for custom packages</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SOCIAL PROOF ── -->
+    <section class="py-24 relative">
+        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
+
+        <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-14 reveal">
+                <p class="font-hype text-sm tracking-[.4em] text-neon-yellow mb-3">— THE PEOPLE KNOW —</p>
+                <h2 class="font-display text-5xl md:text-7xl text-white leading-none">WHAT THEY<br><span class="text-neon-yellow">SAY</span></h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-1">
+                    <div class="flex gap-1 mb-4">
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                    </div>
+                    <p class="font-body text-white/70 leading-relaxed mb-5">"Mango Mamacita hit different on a hot day. The chamoy rim was everything. Will definitely be back every weekend fr."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-neon-yellow/20 border border-neon-yellow/30 flex items-center justify-center font-hype text-neon-yellow text-sm">JR</div>
+                        <div>
+                            <p class="font-hype text-base tracking-widest text-white">JAYLEN R.</p>
+                            <p class="font-body text-xs text-white/30">South Bronx</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-2">
+                    <div class="flex gap-1 mb-4">
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                    </div>
+                    <p class="font-body text-white/70 leading-relaxed mb-5">"Got them for my daughter's birthday cookout. Everyone was asking where they came from. Got the whole block hooked. IYKYK."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-neon-pink/20 border border-neon-pink/30 flex items-center justify-center font-hype text-neon-pink text-sm">DM</div>
+                        <div>
+                            <p class="font-hype text-base tracking-widest text-white">DIANA M.</p>
+                            <p class="font-body text-xs text-white/30">Fordham</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl p-7 reveal reveal-delay-3">
+                    <div class="flex gap-1 mb-4">
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                        <i class="ph-fill ph-star text-neon-yellow text-lg"></i>
+                    </div>
+                    <p class="font-body text-white/70 leading-relaxed mb-5">"Blue Bandida is my go-to every time. The funditas are crazy good too. Best $3 you'll spend in the BX. No cap."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-neon-cyan/20 border border-neon-cyan/30 flex items-center justify-center font-hype text-neon-cyan text-sm">KT</div>
+                        <div>
+                            <p class="font-hype text-base tracking-widest text-white">KEVIN T.</p>
+                            <p class="font-body text-xs text-white/30">Hunts Point</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center reveal reveal-delay-4">
+                <a href="https://instagram.com/beba.slushies" class="inline-flex items-center gap-2 font-hype text-xl tracking-widest text-white/40 hover:text-neon-pink transition-colors">
+                    <i class="ph-fill ph-instagram-logo"></i> TAG US @BEBA.SLUSHIES
+                </a>
+            </div>
+        </div>
+        <div class="divider absolute bottom-0 inset-x-0"></div>
+    </section>
+
+    <!-- ── THE VIBE ── -->
     <section id="vibe" class="py-32 relative">
         <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-pink/4 to-transparent pointer-events-none"></div>
         <div class="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-neon-cyan/4 to-transparent pointer-events-none"></div>
@@ -573,20 +685,14 @@
                 </div>
 
                 <div class="order-1 lg:order-2 reveal reveal-delay-2">
-                    <p class="font-hype text-sm tracking-[0.4em] text-neon-lime mb-4">— THE STORY —</p>
+                    <p class="font-hype text-sm tracking-[.4em] text-neon-lime mb-4">— THE STORY —</p>
                     <h2 class="font-display text-6xl md:text-8xl text-white mb-8 leading-none">THE<br><span class="text-outline-thick glow-lime">BRONX</span> VIBE</h2>
-
                     <div class="space-y-6 font-body text-lg text-white/50 font-light leading-relaxed">
-                        <p class="pl-5 border-l border-neon-pink/60">
-                            Beba Slushies ain't just a drink, it's a whole vibe. Born in the BX, we bring the energy straight to your block. Too cold, too sweet, y con piquete.
-                        </p>
-                        <p>
-                            Whether you're chilling on the stoop, pulling up to a function, or just need to beat the heat — we got the premium slushies that hit different. Hecho con good vibes and the best ingredients.
-                        </p>
+                        <p class="pl-5 border-l border-neon-pink/60">Beba Slushies ain't just a drink, it's a whole vibe. Born in the BX, we bring the energy straight to your block. Too cold, too sweet, y con piquete.</p>
+                        <p>Whether you're chilling on the stoop, pulling up to a function, or just need to beat the heat — we got the premium slushies that hit different. Hecho con good vibes and the best ingredients.</p>
                     </div>
-
                     <div class="mt-10 flex flex-wrap gap-4">
-                        <a href="https://instagram.com/beba.slushies" class="glass-card gradient-border rounded-full flex items-center gap-3 px-7 py-3.5 hover:border-neon-pink/30">
+                        <a href="https://instagram.com/beba.slushies" class="glass-card gradient-border rounded-full flex items-center gap-3 px-7 py-3.5">
                             <i class="ph-fill ph-instagram-logo text-2xl text-white/50"></i>
                             <span class="font-hype text-xl tracking-widest">@BEBA.SLUSHIES</span>
                         </a>
@@ -601,33 +707,31 @@
         </div>
     </section>
 
-    <!-- Footer / Order -->
+    <!-- ── FOOTER / ORDER ── -->
     <footer id="order" class="pt-28 pb-12 relative border-t border-neon-lime/30">
         <div class="absolute inset-0 bg-gradient-to-t from-deep-900 via-deep-800/50 to-transparent pointer-events-none"></div>
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-neon-lime/50 to-transparent"></div>
 
         <div class="max-w-[900px] mx-auto px-4 text-center relative z-10">
-
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-neon-lime/30 bg-neon-lime/5 mb-8 reveal">
                 <i class="ph-fill ph-map-pin text-3xl text-neon-lime animate-bounce"></i>
             </div>
 
             <h2 class="font-display text-5xl md:text-8xl leading-none text-white mb-4 reveal reveal-delay-1">
-                LOCATED IN<br>
-                <span class="text-neon-cyan glow-cyan">BX, NYC</span>
+                LOCATED IN<br><span class="text-neon-cyan glow-cyan">BX, NYC</span>
             </h2>
+            <p class="font-body text-lg text-white/30 mb-14 font-light tracking-wide reveal reveal-delay-2">Ready to get your hands on the best slushies in the borough?</p>
 
-            <p class="font-body text-lg text-white/30 mb-14 font-light tracking-wide reveal reveal-delay-2">
-                Ready to get your hands on the best slushies in the borough?
-            </p>
-
-            <a href="sms:347-375-3948"
-               class="group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(255,45,149,0.5)] rounded-sm reveal reveal-delay-3">
+            <a href="sms:3473753948" class="group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(255,45,149,.5)] rounded-sm reveal reveal-delay-3">
                 <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                 <span class="relative z-10 group-hover:text-neon-pink transition-colors">TEXT TO ORDER</span>
             </a>
 
-            <div class="mt-10 flex items-center justify-center gap-4 font-hype text-lg tracking-[0.3em] text-white/20 reveal reveal-delay-4">
+            <div class="mt-6 reveal reveal-delay-4">
+                <a href="tel:3473753948" class="font-hype text-3xl tracking-widest text-white/30 hover:text-neon-cyan transition-colors">347-375-3948</a>
+            </div>
+
+            <div class="mt-6 flex items-center justify-center gap-4 font-hype text-lg tracking-[.3em] text-white/20 reveal reveal-delay-4">
                 <div class="w-10 h-px bg-white/10"></div>
                 <span>OR HIT THE DM</span>
                 <div class="w-10 h-px bg-white/10"></div>
@@ -635,9 +739,7 @@
 
             <div class="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                 <img src="logo.png" alt="Beba Slushie" class="h-12 w-auto opacity-70">
-                <p class="font-body text-xs text-white/20 uppercase tracking-[0.2em]">
-                    © 2024 Beba Slushies. BX, NYC.
-                </p>
+                <p class="font-body text-xs text-white/20 uppercase tracking-[.2em]">© 2024 Beba Slushies. BX, NYC.</p>
                 <div class="flex gap-5">
                     <a href="https://instagram.com/beba.slushies" class="text-white/20 hover:text-neon-pink transition-colors"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
                     <a href="#" class="text-white/20 hover:text-white transition-colors"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
@@ -647,25 +749,31 @@
     </footer>
 
     <script>
-        // Custom cursor
+        // Cursor
         const cursor = document.getElementById('cursor');
-        const ring = document.getElementById('cursor-ring');
+        const ring   = document.getElementById('cursor-ring');
         document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top  = e.clientY + 'px';
-            ring.style.left   = e.clientX + 'px';
-            ring.style.top    = e.clientY + 'px';
+            cursor.style.left = ring.style.left = e.clientX + 'px';
+            cursor.style.top  = ring.style.top  = e.clientY + 'px';
         });
+
+        // Mobile menu toggle
+        const menuBtn  = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        menuBtn.addEventListener('click', () => {
+            const open = mobileMenu.classList.toggle('open');
+            menuIcon.className = open ? 'ph ph-x text-3xl' : 'ph ph-list text-3xl';
+        });
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuIcon.className = 'ph ph-list text-3xl';
+        }
 
         // Scroll reveal
         const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => {
-                if (e.isIntersecting) {
-                    e.target.classList.add('visible');
-                }
-            });
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
