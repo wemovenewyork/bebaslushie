@@ -1,15 +1,16 @@
-<html lang="en" class="scroll-smooth" vid="0"><head vid="1">
-    <meta charset="UTF-8" vid="2">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
-    <title vid="4">Beba Slushie | Premium Slushies | BX NYC</title>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beba Slushie | Premium Slushies | BX NYC</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" vid="5">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="6">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Luckiest+Guy&amp;family=Outfit:wght@300;400;600;800;900&amp;display=swap" rel="stylesheet" vid="7">
-    <script src="https://unpkg.com/@phosphor-icons/web" vid="8"></script>
-    <script src="https://cdn.tailwindcss.com/3.4.17" vid="9"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 
-    <script vid="10">
+    <script>
         tailwind.config = {
             theme: {
                 extend: {
@@ -22,10 +23,10 @@
                             orange: '#FF5E00',
                             yellow: '#FFD700'
                         },
-                        dark: {
-                            900: '#050505',
-                            800: '#111111',
-                            700: '#1A1A1A'
+                        deep: {
+                            900: '#060410',
+                            800: '#0D0920',
+                            700: '#150E2E'
                         }
                     },
                     fontFamily: {
@@ -34,15 +35,15 @@
                         body: ['"Outfit"', 'sans-serif'],
                     },
                     backgroundImage: {
-                        'noise': 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'3\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
-                        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px)'
+                        'grid-pattern': 'linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px)'
                     },
                     animation: {
                         'marquee': 'marquee 15s linear infinite',
                         'marquee-reverse': 'marquee-reverse 20s linear infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                        'spin-slow': 'spin 12s linear infinite',
-                        'float': 'float 5s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'blob': 'blob 8s ease-in-out infinite',
+                        'blob2': 'blob 10s ease-in-out infinite 2s',
+                        'blob3': 'blob 12s ease-in-out infinite 4s',
                     },
                     keyframes: {
                         marquee: {
@@ -54,52 +55,130 @@
                             '100%': { transform: 'translateX(0%)' },
                         },
                         float: {
-                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-15px) rotate(2deg)' },
+                            '0%, 100%': { transform: 'translateY(0) rotate(-1deg)' },
+                            '50%': { transform: 'translateY(-18px) rotate(1deg)' },
+                        },
+                        blob: {
+                            '0%, 100%': { transform: 'translate(0,0) scale(1)' },
+                            '33%': { transform: 'translate(40px,-30px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px,20px) scale(0.95)' },
                         }
                     }
                 }
             }
         }
     </script>
-    <style vid="11">
+
+    <style>
+        * { cursor: none !important; }
+
+        #cursor {
+            position: fixed;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #FF2D95;
+            box-shadow: 0 0 12px #FF2D95, 0 0 24px rgba(255,45,149,0.5);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+        }
+        #cursor-ring {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255,45,149,0.5);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: left 0.12s ease, top 0.12s ease, width 0.2s, height 0.2s, border-color 0.2s;
+        }
+        body:has(a:hover) #cursor, body:has(button:hover) #cursor { width: 28px; height: 28px; background: #00E5FF; box-shadow: 0 0 16px #00E5FF; }
+        body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring { width: 56px; height: 56px; border-color: rgba(0,229,255,0.5); }
+
         body {
-            background-color: #050505;
+            background-color: #060410;
             color: white;
             overflow-x: hidden;
         }
 
-        .noise-overlay {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 50;
-            opacity: 0.04;
-            mix-blend-mode: overlay;
-        }
+        .glow-pink { text-shadow: 0 0 20px rgba(255,45,149,0.7), 0 0 50px rgba(255,45,149,0.3); }
+        .glow-cyan  { text-shadow: 0 0 20px rgba(0,229,255,0.7), 0 0 50px rgba(0,229,255,0.3); }
+        .glow-lime  { text-shadow: 0 0 20px rgba(196,255,0,0.7); }
+        .text-outline-thick { -webkit-text-stroke: 2px rgba(255,255,255,0.15); color: transparent; }
 
-        .text-outline {
-            -webkit-text-stroke: 1px rgba(255,255,255,0.5);
-            color: transparent;
-        }
-        .text-outline-thick {
-            -webkit-text-stroke: 2px #000;
-        }
-
-        .glow-pink { text-shadow: 0 0 20px rgba(255, 45, 149, 0.8), 0 0 40px rgba(255, 45, 149, 0.4); }
-        .glow-cyan { text-shadow: 0 0 20px rgba(0, 229, 255, 0.8), 0 0 40px rgba(0, 229, 255, 0.4); }
-        .glow-lime { text-shadow: 0 0 20px rgba(196, 255, 0, 0.8); }
-
-        .box-glow-pink { box-shadow: 0 0 20px rgba(255, 45, 149, 0.3); }
-        .box-glow-cyan { box-shadow: 0 0 20px rgba(0, 229, 255, 0.3); }
-
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #FF2D95; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #060410; }
+        ::-webkit-scrollbar-thumb { background: #FF2D95; border-radius: 3px; }
 
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Glassmorphism cards */
+        .glass-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.4s cubic-bezier(0.23,1,0.32,1);
+        }
+        .glass-card:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-4 { transition-delay: 0.4s; }
+        .reveal-delay-5 { transition-delay: 0.5s; }
+
+        /* Animated gradient border */
+        .gradient-border {
+            position: relative;
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, #FF2D95, #00E5FF, #C4FF00, #FF2D95);
+            background-size: 300% 300%;
+            animation: gradient-shift 4s ease infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gradient-border:hover::before { opacity: 1; }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Section divider */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,45,149,0.4), rgba(0,229,255,0.4), transparent);
+        }
 
         .slushie-texture {
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.2'/%3E%3C/svg%3E");
@@ -107,386 +186,413 @@
         }
     </style>
 </head>
-<body class="font-body antialiased relative selection:bg-neon-pink selection:text-white" vid="12">
+<body class="font-body antialiased selection:bg-neon-pink selection:text-white">
 
-    <div class="noise-overlay bg-noise" vid="13"></div>
+    <!-- Custom cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
 
-    <nav class="fixed w-full z-40 top-0 bg-dark-900/80 backdrop-blur-xl border-b border-white/5" vid="14">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8" vid="15">
-            <div class="flex justify-between items-center h-24" vid="16">
-                <a href="#" class="flex-shrink-0 flex items-center group" vid="17">
-                    <img src="logo.png" alt="Beba Slushie" class="h-16 w-auto">
+    <!-- Nav -->
+    <nav class="fixed w-full z-40 top-0 bg-deep-900/70 backdrop-blur-2xl border-b border-white/5">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="#" class="flex-shrink-0">
+                    <img src="logo.png" alt="Beba Slushie" class="h-14 w-auto">
                 </a>
 
-                <div class="hidden lg:flex items-center space-x-12" vid="20">
-                    <a href="#menu" class="font-hype text-2xl tracking-widest text-gray-400 hover:text-white transition-colors relative group" vid="21">
+                <div class="hidden lg:flex items-center space-x-10">
+                    <a href="#menu" class="font-hype text-xl tracking-widest text-white/50 hover:text-white transition-colors relative group">
                         MENU
-                        <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-neon-pink scale-x-0 group-hover:scale-x-100 transition-transform origin-left" vid="22"></span>
+                        <span class="absolute -bottom-1 left-0 w-full h-px bg-neon-pink scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                     </a>
-                    <a href="#funditas" class="font-hype text-2xl tracking-widest text-gray-400 hover:text-white transition-colors relative group" vid="23">
+                    <a href="#funditas" class="font-hype text-xl tracking-widest text-white/50 hover:text-white transition-colors relative group">
                         FUNDITAS
-                        <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-neon-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left" vid="24"></span>
+                        <span class="absolute -bottom-1 left-0 w-full h-px bg-neon-cyan scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                     </a>
-                    <a href="#vibe" class="font-hype text-2xl tracking-widest text-gray-400 hover:text-white transition-colors relative group" vid="25">
+                    <a href="#vibe" class="font-hype text-xl tracking-widest text-white/50 hover:text-white transition-colors relative group">
                         THE VIBE
-                        <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-neon-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left" vid="26"></span>
+                        <span class="absolute -bottom-1 left-0 w-full h-px bg-neon-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                     </a>
                 </div>
 
-                <div class="hidden md:flex items-center gap-4" vid="27">
-                    <a href="https://instagram.com/beba.slushies" class="text-gray-400 hover:text-neon-pink transition-colors" vid="28">
-                        <i class="ph-fill ph-instagram-logo text-3xl" vid="29"></i>
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://instagram.com/beba.slushies" class="text-white/40 hover:text-neon-pink transition-colors">
+                        <i class="ph-fill ph-instagram-logo text-2xl"></i>
                     </a>
-                    <a href="#order" class="px-8 py-3 font-hype text-2xl tracking-widest text-dark-900 bg-neon-lime hover:bg-white transition-all duration-300 transform hover:-translate-y-1 hover:shadow-[0_0_20px_#C4FF00]" vid="30">
+                    <a href="#order" class="px-7 py-2.5 font-hype text-xl tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 hover:shadow-[0_0_24px_rgba(255,45,149,0.6)] hover:-translate-y-0.5">
                         ORDER NOW
                     </a>
                 </div>
 
-                <div class="lg:hidden flex items-center" vid="31">
-                    <button class="text-white hover:text-neon-pink focus:outline-none" vid="32">
-                        <i class="ph ph-list text-4xl" vid="33"></i>
+                <div class="lg:hidden">
+                    <button class="text-white/60 hover:text-neon-pink">
+                        <i class="ph ph-list text-3xl"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="relative min-h-[90vh] flex items-center justify-center pt-24 overflow-hidden" vid="34">
-        <div class="absolute inset-0 bg-grid-pattern bg-[length:50px_50px] opacity-20" vid="35"></div>
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-dark-900/50 to-dark-900" vid="36"></div>
+    <!-- Hero -->
+    <header class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <!-- Animated bg blobs -->
+        <div class="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-neon-pink/15 rounded-full blur-[140px] animate-blob pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[120px] animate-blob2 pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-neon-violet/8 rounded-full blur-[100px] animate-blob3 pointer-events-none"></div>
+        <!-- Grid -->
+        <div class="absolute inset-0 bg-grid-pattern bg-[length:60px_60px] pointer-events-none"></div>
+        <!-- Fade to bottom -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-deep-900/30 to-deep-900 pointer-events-none"></div>
 
-        <div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-neon-pink/20 rounded-full blur-[120px]" vid="37"></div>
-        <div class="absolute bottom-0 right-0 w-[600px] h-[600px] bg-neon-cyan/10 rounded-full blur-[150px]" vid="38"></div>
+        <div class="relative z-10 flex flex-col items-center text-center px-4 gap-8">
+            <img src="logo.png" alt="Beba Slushie" class="w-64 sm:w-80 md:w-[420px] animate-float drop-shadow-[0_0_60px_rgba(255,45,149,0.4)]">
 
-        <div class="relative w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center z-10" vid="39">
+            <h2 class="font-hype text-4xl sm:text-5xl md:text-7xl tracking-[0.15em] flex flex-wrap justify-center items-center gap-3 sm:gap-6">
+                <span class="text-white glow-pink">CHILL.</span>
+                <span class="text-neon-cyan glow-cyan">SIP.</span>
+                <span class="text-neon-lime glow-lime">TURN UP.</span>
+            </h2>
 
-<div class="flex flex-col items-center text-center gap-6 py-8" vid="43">
-                <img src="logo.png" alt="Beba Slushie" class="w-64 sm:w-80 md:w-96 animate-float drop-shadow-[0_0_40px_rgba(255,45,149,0.5)]">
-                <h2 class="font-hype text-4xl sm:text-6xl md:text-7xl tracking-widest flex items-center gap-4 sm:gap-8" vid="55">
-                    <span class="text-white glow-pink" vid="56">CHILL.</span>
-                    <span class="text-neon-cyan glow-cyan" vid="57">SIP.</span>
-                    <span class="text-neon-lime glow-lime" vid="58">TURN UP.</span>
-                </h2>
-                <p class="font-body text-lg sm:text-xl md:text-2xl text-gray-400 font-light tracking-wide uppercase border border-white/10 px-6 py-2 rounded-full bg-black/50 backdrop-blur-sm" vid="59">
-                    La Presión Del Verano • BX, NYC
-                </p>
-            </div>
+            <p class="font-body text-base sm:text-lg text-white/40 tracking-[0.25em] uppercase">
+                La Presión Del Verano &nbsp;·&nbsp; BX, NYC
+            </p>
+
+            <a href="#menu" class="mt-4 group flex items-center gap-2 font-hype text-xl tracking-widest text-white/60 hover:text-white transition-colors">
+                EXPLORE THE MENU
+                <i class="ph ph-arrow-down text-xl group-hover:translate-y-1 transition-transform"></i>
+            </a>
         </div>
     </header>
 
-    <div class="relative w-full overflow-hidden bg-neon-pink py-4 border-y-2 border-white transform -rotate-1 z-20" vid="60">
-        <div class="flex w-[200%] animate-marquee" vid="61">
-            <div class="flex items-center justify-around w-1/2 min-w-max" vid="62">
-                <span class="font-display text-4xl text-black uppercase tracking-wide mx-8" vid="63">PREMIUM SLUSHIES</span>
-                <i class="ph-fill ph-fire text-black text-4xl mx-8" vid="64"></i>
-                <span class="font-display text-4xl text-white text-outline-thick uppercase tracking-wide mx-8" vid="65">LA PRESIÓN DEL VERANO</span>
-                <i class="ph-fill ph-drop text-black text-4xl mx-8" vid="66"></i>
-                <span class="font-display text-4xl text-black uppercase tracking-wide mx-8" vid="67">BRONX NYC</span>
-                <i class="ph-fill ph-snowflake text-black text-4xl mx-8" vid="68"></i>
+    <!-- Marquee 1 -->
+    <div class="relative w-full overflow-hidden bg-neon-pink py-3.5 border-y border-white/10 transform -rotate-1 z-20">
+        <div class="flex w-[200%] animate-marquee">
+            <div class="flex items-center w-1/2 min-w-max">
+                <span class="font-display text-3xl text-deep-900 uppercase tracking-wide mx-8">PREMIUM SLUSHIES</span>
+                <i class="ph-fill ph-fire text-deep-900 text-3xl mx-8"></i>
+                <span class="font-display text-3xl text-white uppercase tracking-wide mx-8">LA PRESIÓN DEL VERANO</span>
+                <i class="ph-fill ph-drop text-deep-900 text-3xl mx-8"></i>
+                <span class="font-display text-3xl text-deep-900 uppercase tracking-wide mx-8">BRONX NYC</span>
+                <i class="ph-fill ph-snowflake text-deep-900 text-3xl mx-8"></i>
             </div>
-            <div class="flex items-center justify-around w-1/2 min-w-max" vid="69">
-                <span class="font-display text-4xl text-black uppercase tracking-wide mx-8" vid="70">PREMIUM SLUSHIES</span>
-                <i class="ph-fill ph-fire text-black text-4xl mx-8" vid="71"></i>
-                <span class="font-display text-4xl text-white text-outline-thick uppercase tracking-wide mx-8" vid="72">LA PRESIÓN DEL VERANO</span>
-                <i class="ph-fill ph-drop text-black text-4xl mx-8" vid="73"></i>
-                <span class="font-display text-4xl text-black uppercase tracking-wide mx-8" vid="74">BRONX NYC</span>
-                <i class="ph-fill ph-snowflake text-black text-4xl mx-8" vid="75"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="relative w-full overflow-hidden bg-neon-cyan py-3 border-b-2 border-white transform rotate-1 z-10 -mt-2" vid="76">
-        <div class="flex w-[200%] animate-marquee-reverse" vid="77">
-            <div class="flex items-center justify-around w-1/2 min-w-max" vid="78">
-                <span class="font-hype text-3xl text-black tracking-[0.2em] mx-6" vid="79">100% GOOD VIBES</span>
-                <span class="font-hype text-3xl text-white tracking-[0.2em] mx-6" vid="80">///</span>
-                <span class="font-hype text-3xl text-black tracking-[0.2em] mx-6" vid="81">ICE COLD</span>
-                <span class="font-hype text-3xl text-white tracking-[0.2em] mx-6" vid="82">///</span>
-                <span class="font-hype text-3xl text-black tracking-[0.2em] mx-6" vid="83">TURN UP THE HEAT</span>
-                <span class="font-hype text-3xl text-white tracking-[0.2em] mx-6" vid="84">///</span>
-            </div>
-            <div class="flex items-center justify-around w-1/2 min-w-max" vid="85">
-                <span class="font-hype text-3xl text-black tracking-[0.2em] mx-6" vid="86">100% GOOD VIBES</span>
-                <span class="font-hype text-3xl text-white tracking-[0.2em] mx-6" vid="87">///</span>
-                <span class="font-hype text-3xl text-black tracking-[0.2em] mx-6" vid="88">ICE COLD</span>
-                <span class="font-hype text-3xl text-white tracking-[0.2em] mx-6" vid="89">///</span>
-                <span class="font-hype text-3xl text-black tracking-[0.2em] mx-6" vid="90">TURN UP THE HEAT</span>
-                <span class="font-hype text-3xl text-white tracking-[0.2em] mx-6" vid="91">///</span>
+            <div class="flex items-center w-1/2 min-w-max">
+                <span class="font-display text-3xl text-deep-900 uppercase tracking-wide mx-8">PREMIUM SLUSHIES</span>
+                <i class="ph-fill ph-fire text-deep-900 text-3xl mx-8"></i>
+                <span class="font-display text-3xl text-white uppercase tracking-wide mx-8">LA PRESIÓN DEL VERANO</span>
+                <i class="ph-fill ph-drop text-deep-900 text-3xl mx-8"></i>
+                <span class="font-display text-3xl text-deep-900 uppercase tracking-wide mx-8">BRONX NYC</span>
+                <i class="ph-fill ph-snowflake text-deep-900 text-3xl mx-8"></i>
             </div>
         </div>
     </div>
 
-    <section id="menu" class="py-32 relative bg-dark-900" vid="92">
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10" vid="93">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-white/10 pb-8" vid="94">
-                <div vid="95">
-                    <h2 class="font-display text-6xl md:text-8xl text-white mb-2" vid="96">SIGNATURE</h2>
-                    <h2 class="font-display text-6xl md:text-8xl text-transparent text-outline-thick glow-cyan" vid="97">FLAVORS</h2>
+    <!-- Marquee 2 -->
+    <div class="relative w-full overflow-hidden bg-neon-cyan py-3 border-b border-white/10 transform rotate-1 z-10 -mt-1">
+        <div class="flex w-[200%] animate-marquee-reverse">
+            <div class="flex items-center w-1/2 min-w-max">
+                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">100% GOOD VIBES</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">ICE COLD</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">TURN UP THE HEAT</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+            </div>
+            <div class="flex items-center w-1/2 min-w-max">
+                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">100% GOOD VIBES</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">ICE COLD</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+                <span class="font-hype text-2xl text-deep-900 tracking-[0.2em] mx-6">TURN UP THE HEAT</span>
+                <span class="font-hype text-2xl text-white/60 tracking-[0.2em] mx-6">///</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu -->
+    <section id="menu" class="py-32 relative">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 pb-8 reveal">
+                <div>
+                    <p class="font-hype text-sm tracking-[0.4em] text-neon-pink mb-3">— PICK YOUR FLAVOR —</p>
+                    <h2 class="font-display text-6xl md:text-8xl text-white leading-none">SIGNATURE</h2>
+                    <h2 class="font-display text-6xl md:text-8xl text-outline-thick glow-cyan leading-none">FLAVORS</h2>
                 </div>
-                <div class="text-right" vid="98">
-                    <p class="font-hype text-2xl text-neon-lime tracking-widest" vid="99">PICK YOUR FLAVOR</p>
-                    <p class="font-body text-gray-400 font-light mt-2 max-w-sm" vid="100">Handcrafted slushies made with premium ingredients and fresh flavors.</p>
+                <p class="font-body text-white/40 font-light max-w-xs text-right mt-4 md:mt-0 leading-relaxed">
+                    Handcrafted slushies made with premium ingredients and fresh flavors.
+                </p>
+            </div>
+
+            <div class="divider mb-16"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                <!-- Piña Perreo -->
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-1">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-neon-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="font-display text-4xl text-white leading-tight">PIÑA<br>PERREO</h3>
+                            <div class="w-10 h-10 rounded-full border border-neon-orange/40 flex items-center justify-center text-neon-orange bg-neon-orange/10">
+                                <i class="ph-fill ph-sparkle text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="w-12 h-px bg-neon-orange mb-6"></div>
+                        <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-orange"></span>Pineapple</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>Coconut Water</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-red-400"></span>Tajín Rim</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                        <i class="ph-fill ph-drop text-[220px] text-neon-orange"></i>
+                    </div>
+                </div>
+
+                <!-- Mango Mamacita -->
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-2">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-neon-yellow/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="font-display text-4xl text-white leading-tight">MANGO<br>MAMACITA</h3>
+                            <div class="w-10 h-10 rounded-full border border-neon-yellow/40 flex items-center justify-center text-neon-yellow bg-neon-yellow/10">
+                                <i class="ph-fill ph-fire text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="w-12 h-px bg-neon-yellow mb-6"></div>
+                        <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-yellow"></span>Mango</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>Lime Juice</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>Chamoy</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                        <i class="ph-fill ph-drop text-[220px] text-neon-yellow"></i>
+                    </div>
+                </div>
+
+                <!-- Blue Bandida -->
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between xl:-translate-y-6 reveal reveal-delay-3">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-neon-cyan/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="font-display text-4xl text-white leading-tight">BLUE<br>BANDIDA</h3>
+                            <div class="w-10 h-10 rounded-full border border-neon-cyan/40 flex items-center justify-center text-neon-cyan bg-neon-cyan/10">
+                                <i class="ph-fill ph-snowflake text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="w-12 h-px bg-neon-cyan mb-6"></div>
+                        <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-cyan"></span>Blue Raspberry</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>Lemon Ice</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-yellow-300"></span>Lemon</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                        <i class="ph-fill ph-drop text-[220px] text-neon-cyan"></i>
+                    </div>
+                </div>
+
+                <!-- Fresa Fuego -->
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-1">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-neon-pink/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="font-display text-4xl text-white leading-tight">FRESA<br>FUEGO</h3>
+                            <div class="w-10 h-10 rounded-full border border-neon-pink/40 flex items-center justify-center text-neon-pink bg-neon-pink/10">
+                                <i class="ph-fill ph-heart text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="w-12 h-px bg-neon-pink mb-6"></div>
+                        <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-pink"></span>Strawberry</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>Hibiscus</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-lime"></span>Lime</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                        <i class="ph-fill ph-drop text-[220px] text-neon-pink"></i>
+                    </div>
+                </div>
+
+                <!-- Parcha Party -->
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-2">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-neon-violet/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="font-display text-4xl text-white leading-tight">PARCHA<br>PARTY</h3>
+                            <div class="w-10 h-10 rounded-full border border-neon-violet/40 flex items-center justify-center text-neon-violet bg-neon-violet/10">
+                                <i class="ph-fill ph-flower-lotus text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="w-12 h-px bg-neon-violet mb-6"></div>
+                        <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-neon-violet"></span>Passionfruit</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>Ginger</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>Mint</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                        <i class="ph-fill ph-drop text-[220px] text-neon-violet"></i>
+                    </div>
+                </div>
+
+                <!-- Coco Loco -->
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between xl:-translate-y-6 reveal reveal-delay-3">
+                    <div class="absolute top-0 right-0 w-56 h-56 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <h3 class="font-display text-4xl text-white leading-tight">COCO<br>LOCO</h3>
+                            <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/70 bg-white/5">
+                                <i class="ph-fill ph-cloud text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="w-12 h-px bg-white/30 mb-6"></div>
+                        <ul class="font-body text-base text-white/60 space-y-2.5 uppercase tracking-wider">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/50"></span>Coconut</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-white/40"></span>Vanilla</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-blue-200"></span>Cream</li>
+                        </ul>
+                    </div>
+                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                        <i class="ph-fill ph-drop text-[220px] text-white"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Funditas -->
+    <section id="funditas" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
+        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="divider absolute bottom-0 inset-x-0"></div>
+
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="flex flex-col md:flex-row items-end justify-between gap-8 mb-12 reveal">
+                <div>
+                    <p class="font-hype text-sm tracking-[0.4em] text-neon-cyan mb-3">— GRAB &amp; GO —</p>
+                    <h2 class="font-display text-5xl md:text-7xl text-white leading-none">HELADOS DE</h2>
+                    <h2 class="font-display text-5xl md:text-7xl text-neon-pink glow-pink leading-none">FUNDITAS</h2>
+                </div>
+                <div class="glass-card rounded-2xl px-8 py-5 flex flex-col sm:flex-row items-center gap-6">
+                    <div class="text-center">
+                        <p class="font-hype text-3xl text-neon-lime tracking-widest">$3 EACH</p>
+                        <p class="font-body text-xs text-white/40 uppercase tracking-widest mt-1">Grab &amp; Go</p>
+                    </div>
+                    <div class="hidden sm:block w-px h-10 bg-white/10"></div>
+                    <div class="text-center">
+                        <p class="font-hype text-3xl text-neon-cyan tracking-widest">2 FOR $5</p>
+                        <p class="font-body text-xs text-white/40 uppercase tracking-widest mt-1">Best Value</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8" vid="101">
-                <div class="group bg-dark-800 border border-white/5 hover:border-neon-orange transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden h-[400px]" vid="102">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-neon-orange/10 rounded-full blur-[80px] group-hover:bg-neon-orange/20 transition-all" vid="103"></div>
-                    <div class="relative z-10" vid="104">
-                        <div class="flex justify-between items-start mb-8" vid="105">
-                            <h3 class="font-display text-4xl text-white group-hover:text-neon-orange transition-colors" vid="106">PIÑA<br vid="107">PERREO</h3>
-                            <div class="w-12 h-12 rounded-full border-2 border-neon-orange flex items-center justify-center bg-neon-orange/10 text-neon-orange" vid="108">
-                                <i class="ph-fill ph-sparkle text-xl" vid="109"></i>
-                            </div>
-                        </div>
-                        <div class="w-full h-[2px] bg-gradient-to-r from-neon-orange to-transparent mb-8" vid="110"></div>
-                        <ul class="font-body text-lg text-gray-300 space-y-3 font-light uppercase tracking-wide" vid="111">
-                            <li class="flex items-center gap-3" vid="112"><span class="w-2 h-2 rounded-full bg-neon-orange" vid="113"></span> PINEAPPLE</li>
-                            <li class="flex items-center gap-3" vid="114"><span class="w-2 h-2 rounded-full bg-white" vid="115"></span> COCONUT WATER</li>
-                            <li class="flex items-center gap-3" vid="116"><span class="w-2 h-2 rounded-full bg-red-500" vid="117"></span> TAJÍN RIM</li>
-                        </ul>
-                    </div>
-                    <div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 z-0" vid="118">
-                        <i class="ph-fill ph-drop text-[250px] text-neon-orange" vid="119"></i>
-                    </div>
-                </div>
+            <!-- Funditas flyer -->
+            <div class="flex justify-center mb-14 reveal reveal-delay-1">
+                <img src="funditas-flyer.png" alt="Helados de Funditas — $3 each, 2 for $5"
+                    class="w-full max-w-sm sm:max-w-md rounded-3xl shadow-[0_0_60px_rgba(255,45,149,0.2)] border border-white/5">
+            </div>
 
-                <div class="group bg-dark-800 border border-white/5 hover:border-neon-yellow transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden h-[400px]" vid="120">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-neon-yellow/10 rounded-full blur-[80px] group-hover:bg-neon-yellow/20 transition-all" vid="121"></div>
-                    <div class="relative z-10" vid="122">
-                        <div class="flex justify-between items-start mb-8" vid="123">
-                            <h3 class="font-display text-4xl text-white group-hover:text-neon-yellow transition-colors" vid="124">MANGO<br vid="125">MAMACITA</h3>
-                            <div class="w-12 h-12 rounded-full border-2 border-neon-yellow flex items-center justify-center bg-neon-yellow/10 text-neon-yellow" vid="126">
-                                <i class="ph-fill ph-fire text-xl" vid="127"></i>
-                            </div>
-                        </div>
-                        <div class="w-full h-[2px] bg-gradient-to-r from-neon-yellow to-transparent mb-8" vid="128"></div>
-                        <ul class="font-body text-lg text-gray-300 space-y-3 font-light uppercase tracking-wide" vid="129">
-                            <li class="flex items-center gap-3" vid="130"><span class="w-2 h-2 rounded-full bg-neon-yellow" vid="131"></span> MANGO</li>
-                            <li class="flex items-center gap-3" vid="132"><span class="w-2 h-2 rounded-full bg-white" vid="133"></span> LIME JUICE</li>
-                            <li class="flex items-center gap-3" vid="134"><span class="w-2 h-2 rounded-full bg-red-600" vid="135"></span> CHAMOY</li>
-                        </ul>
-                    </div>
-                    <div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 z-0" vid="136">
-                        <i class="ph-fill ph-drop text-[250px] text-neon-yellow" vid="137"></i>
-                    </div>
-                </div>
+            <!-- Fundita bags scroll -->
+            <div class="w-full overflow-x-auto hide-scrollbar pb-8 pt-2">
+                <div class="flex gap-8 w-max mx-auto">
 
-                <div class="group bg-dark-800 border border-white/5 hover:border-neon-cyan transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden h-[400px] xl:transform xl:-translate-y-8" vid="138">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/10 rounded-full blur-[80px] group-hover:bg-neon-cyan/20 transition-all" vid="139"></div>
-                    <div class="relative z-10" vid="140">
-                        <div class="flex justify-between items-start mb-8" vid="141">
-                            <h3 class="font-display text-4xl text-white group-hover:text-neon-cyan transition-colors" vid="142">BLUE<br vid="143">BANDIDA</h3>
-                            <div class="w-12 h-12 rounded-full border-2 border-neon-cyan flex items-center justify-center bg-neon-cyan/10 text-neon-cyan" vid="144">
-                                <i class="ph-fill ph-snowflake text-xl" vid="145"></i>
-                            </div>
+                    <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-1">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#ff0055] to-[#80002a] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                            <div class="absolute inset-0 slushie-texture"></div>
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
+                            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
-                        <div class="w-full h-[2px] bg-gradient-to-r from-neon-cyan to-transparent mb-8" vid="146"></div>
-                        <ul class="font-body text-lg text-gray-300 space-y-3 font-light uppercase tracking-wide" vid="147">
-                            <li class="flex items-center gap-3" vid="148"><span class="w-2 h-2 rounded-full bg-neon-cyan" vid="149"></span> BLUE RASPBERRY</li>
-                            <li class="flex items-center gap-3" vid="150"><span class="w-2 h-2 rounded-full bg-white" vid="151"></span> LEMON ICE</li>
-                            <li class="flex items-center gap-3" vid="152"><span class="w-2 h-2 rounded-full bg-yellow-400" vid="153"></span> LEMON</li>
-                        </ul>
+                        <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-neon-pink transition-colors">STRAWBERRY</p>
                     </div>
-                    <div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 z-0" vid="154">
-                        <i class="ph-fill ph-drop text-[250px] text-neon-cyan" vid="155"></i>
-                    </div>
-                </div>
 
-                <div class="group bg-dark-800 border border-white/5 hover:border-neon-pink transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden h-[400px]" vid="156">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-neon-pink/10 rounded-full blur-[80px] group-hover:bg-neon-pink/20 transition-all" vid="157"></div>
-                    <div class="relative z-10" vid="158">
-                        <div class="flex justify-between items-start mb-8" vid="159">
-                            <h3 class="font-display text-4xl text-white group-hover:text-neon-pink transition-colors" vid="160">FRESA<br vid="161">FUEGO</h3>
-                            <div class="w-12 h-12 rounded-full border-2 border-neon-pink flex items-center justify-center bg-neon-pink/10 text-neon-pink" vid="162">
-                                <i class="ph-fill ph-heart text-xl" vid="163"></i>
-                            </div>
+                    <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-2">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#ff8c00] to-[#995400] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                            <div class="absolute inset-0 slushie-texture"></div>
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
+                            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
-                        <div class="w-full h-[2px] bg-gradient-to-r from-neon-pink to-transparent mb-8" vid="164"></div>
-                        <ul class="font-body text-lg text-gray-300 space-y-3 font-light uppercase tracking-wide" vid="165">
-                            <li class="flex items-center gap-3" vid="166"><span class="w-2 h-2 rounded-full bg-neon-pink" vid="167"></span> STRAWBERRY</li>
-                            <li class="flex items-center gap-3" vid="168"><span class="w-2 h-2 rounded-full bg-white" vid="169"></span> HIBISCUS</li>
-                            <li class="flex items-center gap-3" vid="170"><span class="w-2 h-2 rounded-full bg-neon-lime" vid="171"></span> LIME</li>
-                        </ul>
+                        <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-[#ff8c00] transition-colors">MANGO</p>
                     </div>
-                    <div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 z-0" vid="172">
-                        <i class="ph-fill ph-drop text-[250px] text-neon-pink" vid="173"></i>
-                    </div>
-                </div>
 
-                <div class="group bg-dark-800 border border-white/5 hover:border-neon-violet transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden h-[400px]" vid="174">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-neon-violet/10 rounded-full blur-[80px] group-hover:bg-neon-violet/20 transition-all" vid="175"></div>
-                    <div class="relative z-10" vid="176">
-                        <div class="flex justify-between items-start mb-8" vid="177">
-                            <h3 class="font-display text-4xl text-white group-hover:text-neon-violet transition-colors" vid="178">PARCHA<br vid="179">PARTY</h3>
-                            <div class="w-12 h-12 rounded-full border-2 border-neon-violet flex items-center justify-center bg-neon-violet/10 text-neon-violet" vid="180">
-                                <i class="ph-fill ph-flower-lotus text-xl" vid="181"></i>
-                            </div>
+                    <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-3">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#00E5FF] to-[#0055ff] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_0_40px_rgba(0,229,255,0.15)] transform group-hover:-translate-y-4 transition-all duration-400">
+                            <div class="absolute inset-0 slushie-texture"></div>
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
+                            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
-                        <div class="w-full h-[2px] bg-gradient-to-r from-neon-violet to-transparent mb-8" vid="182"></div>
-                        <ul class="font-body text-lg text-gray-300 space-y-3 font-light uppercase tracking-wide" vid="183">
-                            <li class="flex items-center gap-3" vid="184"><span class="w-2 h-2 rounded-full bg-neon-violet" vid="185"></span> PASSIONFRUIT</li>
-                            <li class="flex items-center gap-3" vid="186"><span class="w-2 h-2 rounded-full bg-white" vid="187"></span> GINGER</li>
-                            <li class="flex items-center gap-3" vid="188"><span class="w-2 h-2 rounded-full bg-green-400" vid="189"></span> MINT</li>
-                        </ul>
+                        <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-neon-cyan transition-colors">BLUE RASPBERRY</p>
                     </div>
-                    <div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 z-0" vid="190">
-                        <i class="ph-fill ph-drop text-[250px] text-neon-violet" vid="191"></i>
-                    </div>
-                </div>
 
-                <div class="group bg-dark-800 border border-white/5 hover:border-white transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden h-[400px] xl:transform xl:-translate-y-8" vid="192">
-                    <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-[80px] group-hover:bg-white/10 transition-all" vid="193"></div>
-                    <div class="relative z-10" vid="194">
-                        <div class="flex justify-between items-start mb-8" vid="195">
-                            <h3 class="font-display text-4xl text-white group-hover:text-gray-300 transition-colors" vid="196">COCO<br vid="197">LOCO</h3>
-                            <div class="w-12 h-12 rounded-full border-2 border-white flex items-center justify-center bg-white/10 text-white" vid="198">
-                                <i class="ph-fill ph-cloud text-xl" vid="199"></i>
-                            </div>
+                    <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-4">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#8B3FD9] to-[#4a1c7a] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                            <div class="absolute inset-0 slushie-texture"></div>
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-white/20 rounded-full blur-sm"></div>
+                            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-white/40 rounded-full"></div>
                         </div>
-                        <div class="w-full h-[2px] bg-gradient-to-r from-white to-transparent mb-8" vid="200"></div>
-                        <ul class="font-body text-lg text-gray-300 space-y-3 font-light uppercase tracking-wide" vid="201">
-                            <li class="flex items-center gap-3" vid="202"><span class="w-2 h-2 rounded-full bg-gray-300" vid="203"></span> COCONUT</li>
-                            <li class="flex items-center gap-3" vid="204"><span class="w-2 h-2 rounded-full bg-white" vid="205"></span> VANILLA</li>
-                            <li class="flex items-center gap-3" vid="206"><span class="w-2 h-2 rounded-full bg-blue-200" vid="207"></span> CREAM</li>
-                        </ul>
+                        <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-neon-violet transition-colors">PASSIONFRUIT</p>
                     </div>
-                    <div class="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 z-0" vid="208">
-                        <i class="ph-fill ph-drop text-[250px] text-white" vid="209"></i>
+
+                    <div class="flex flex-col items-center group w-36 sm:w-44 reveal reveal-delay-5">
+                        <div class="w-full h-60 sm:h-72 bg-gradient-to-b from-[#e8e8e8] to-[#999] rounded-t-sm rounded-b-3xl relative border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-all duration-400">
+                            <div class="absolute inset-0 slushie-texture"></div>
+                            <div class="absolute -top-3 left-1/2 -translate-x-1/2 w-14 h-7 bg-black/10 rounded-full blur-sm"></div>
+                            <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-5 border border-black/20 rounded-full"></div>
+                        </div>
+                        <p class="mt-5 font-hype text-xl tracking-widest text-white/60 group-hover:text-white transition-colors">COCONUT</p>
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="funditas" class="py-24 bg-[#0a0a0a] border-y border-white/10 relative overflow-hidden" vid="210">
-        <div class="absolute inset-0 bg-grid-pattern opacity-10" vid="211"></div>
+    <!-- The Vibe -->
+    <section id="vibe" class="py-32 relative">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-neon-pink/4 to-transparent pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-1/2 h-full bg-gradient-to-r from-neon-cyan/4 to-transparent pointer-events-none"></div>
 
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-16" vid="212">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8" vid="213">
-                <div vid="214">
-                    <h2 class="font-display text-5xl md:text-7xl text-white tracking-wide" vid="215">HELADOS DE</h2>
-                    <h2 class="font-display text-5xl md:text-7xl text-neon-pink glow-pink tracking-wide" vid="216">FUNDITAS</h2>
-                </div>
-                <div class="bg-dark-800 border border-neon-cyan p-6 rounded-2xl flex flex-col sm:flex-row items-center gap-6 shadow-[0_0_30px_rgba(0,229,255,0.1)]" vid="217">
-                    <div class="text-center sm:text-left" vid="218">
-                        <p class="font-hype text-4xl text-neon-lime tracking-widest" vid="219">$3 EACH</p>
-                        <p class="font-body text-sm text-gray-400 uppercase tracking-widest mt-1" vid="220">Grab &amp; Go</p>
-                    </div>
-                    <div class="hidden sm:block w-[1px] h-12 bg-white/20" vid="221"></div>
-                    <div class="text-center sm:text-left" vid="222">
-                        <p class="font-hype text-4xl text-neon-cyan tracking-widest" vid="223">2 FOR $5</p>
-                        <p class="font-body text-sm text-gray-400 uppercase tracking-widest mt-1" vid="224">Best Value</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 mb-12">
-            <div class="flex justify-center">
-                <img src="funditas-flyer.png" alt="Helados de Funditas — $3 each, 2 for $5" class="w-full max-w-sm sm:max-w-md rounded-2xl shadow-[0_0_40px_rgba(255,45,149,0.3)] border border-white/10">
-            </div>
-        </div>
-
-        <div class="w-full overflow-x-auto hide-scrollbar pb-12 pt-4 px-4 sm:px-8" vid="225">
-            <div class="flex gap-6 sm:gap-10 w-max mx-auto" vid="226">
-                <div class="flex flex-col items-center group w-40 sm:w-48" vid="227">
-                    <div class="w-full h-64 sm:h-80 bg-gradient-to-b from-[#ff0055] to-[#80002a] rounded-t-sm rounded-b-3xl relative border-4 border-white/20 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-transform duration-300" vid="228">
-                        <div class="absolute inset-0 slushie-texture" vid="229"></div>
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-8 bg-white/30 rounded-full blur-sm" vid="230"></div>
-                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-6 border-2 border-white/50 rounded-full" vid="231"></div>
-                        <div class="absolute top-4 left-4 right-4 h-full border-t border-white/30 rounded-[50%] opacity-50" vid="232"></div>
-                    </div>
-                    <p class="mt-6 font-hype text-2xl tracking-widest text-white group-hover:text-neon-pink transition-colors" vid="233">STRAWBERRY</p>
-                </div>
-
-                <div class="flex flex-col items-center group w-40 sm:w-48" vid="234">
-                    <div class="w-full h-64 sm:h-80 bg-gradient-to-b from-[#ff8c00] to-[#995400] rounded-t-sm rounded-b-3xl relative border-4 border-white/20 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-transform duration-300" vid="235">
-                        <div class="absolute inset-0 slushie-texture" vid="236"></div>
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-8 bg-white/30 rounded-full blur-sm" vid="237"></div>
-                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-6 border-2 border-white/50 rounded-full" vid="238"></div>
-                        <div class="absolute top-4 left-4 right-4 h-full border-t border-white/30 rounded-[50%] opacity-50" vid="239"></div>
-                    </div>
-                    <p class="mt-6 font-hype text-2xl tracking-widest text-white group-hover:text-[#ff8c00] transition-colors" vid="240">MANGO</p>
-                </div>
-
-                <div class="flex flex-col items-center group w-40 sm:w-48" vid="241">
-                    <div class="w-full h-64 sm:h-80 bg-gradient-to-b from-[#00E5FF] to-[#0055ff] rounded-t-sm rounded-b-3xl relative border-4 border-white/20 shadow-[0_0_30px_rgba(0,229,255,0.3)] transform group-hover:-translate-y-4 transition-transform duration-300" vid="242">
-                        <div class="absolute inset-0 slushie-texture" vid="243"></div>
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-8 bg-white/30 rounded-full blur-sm" vid="244"></div>
-                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-6 border-2 border-white/50 rounded-full" vid="245"></div>
-                        <div class="absolute top-4 left-4 right-4 h-full border-t border-white/30 rounded-[50%] opacity-50" vid="246"></div>
-                    </div>
-                    <p class="mt-6 font-hype text-2xl tracking-widest text-white group-hover:text-neon-cyan transition-colors" vid="247">BLUE RASPBERRY</p>
-                </div>
-
-                <div class="flex flex-col items-center group w-40 sm:w-48" vid="248">
-                    <div class="w-full h-64 sm:h-80 bg-gradient-to-b from-[#8B3FD9] to-[#4a1c7a] rounded-t-sm rounded-b-3xl relative border-4 border-white/20 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-transform duration-300" vid="249">
-                        <div class="absolute inset-0 slushie-texture" vid="250"></div>
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-8 bg-white/30 rounded-full blur-sm" vid="251"></div>
-                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-6 border-2 border-white/50 rounded-full" vid="252"></div>
-                        <div class="absolute top-4 left-4 right-4 h-full border-t border-white/30 rounded-[50%] opacity-50" vid="253"></div>
-                    </div>
-                    <p class="mt-6 font-hype text-2xl tracking-widest text-white group-hover:text-neon-violet transition-colors" vid="254">PASSIONFRUIT</p>
-                </div>
-
-                <div class="flex flex-col items-center group w-40 sm:w-48" vid="255">
-                    <div class="w-full h-64 sm:h-80 bg-gradient-to-b from-[#ffffff] to-[#999999] rounded-t-sm rounded-b-3xl relative border-4 border-white/20 shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform group-hover:-translate-y-4 transition-transform duration-300" vid="256">
-                        <div class="absolute inset-0 slushie-texture" vid="257"></div>
-                        <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-16 h-8 bg-black/10 rounded-full blur-sm" vid="258"></div>
-                        <div class="absolute -top-2 left-1/2 -translate-x-1/2 w-12 h-6 border-2 border-black/20 rounded-full" vid="259"></div>
-                        <div class="absolute top-4 left-4 right-4 h-full border-t border-black/10 rounded-[50%] opacity-50" vid="260"></div>
-                    </div>
-                    <p class="mt-6 font-hype text-2xl tracking-widest text-white group-hover:text-gray-300 transition-colors" vid="261">COCONUT</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="vibe" class="py-32 bg-dark-900 relative" vid="262">
-        <div class="absolute top-0 right-0 w-1/3 h-full bg-gradient-to-l from-neon-pink/5 to-transparent pointer-events-none" vid="263"></div>
-        <div class="absolute bottom-0 left-0 w-1/3 h-full bg-gradient-to-r from-neon-cyan/5 to-transparent pointer-events-none" vid="264"></div>
-
-        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10" vid="265">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center" vid="266">
-
-                <div class="relative order-2 lg:order-1" vid="267">
-                    <div class="absolute inset-0 bg-neon-lime/20 blur-[100px] rounded-full" vid="268"></div>
-                    <div class="relative w-full aspect-square bg-dark-800 border border-white/10 rounded-3xl p-4 transform -rotate-2 hover:rotate-0 transition-transform duration-500" vid="269">
-                        <div class="w-full h-full bg-dark-900 rounded-2xl overflow-hidden relative border border-white/5 flex items-center justify-center" vid="270">
-                            <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'20\' height=\'20\' viewBox=\'0 0 20 20\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Ccircle cx=\'2\' cy=\'2\' r=\'1\' fill=\'rgba(255,255,255,0.05)\'/%3E%3C/svg%3E')]" vid="271"></div>
-
-                            <div class="text-center z-10 px-8" vid="272">
-                                <i class="ph-fill ph-boom text-9xl text-neon-pink mb-6 animate-pulse" vid="273"></i>
-                                <h3 class="font-display text-5xl md:text-6xl text-white leading-tight" vid="274">POUR IT UP,<br vid="275">DRINK IT DOWN.</h3>
+                <div class="relative order-2 lg:order-1 reveal">
+                    <div class="absolute inset-0 bg-neon-lime/10 blur-[120px] rounded-full pointer-events-none"></div>
+                    <div class="glass-card rounded-3xl p-4 transform -rotate-1 hover:rotate-0 transition-transform duration-500">
+                        <div class="rounded-2xl overflow-hidden aspect-square relative flex items-center justify-center bg-deep-800 border border-white/5">
+                            <div class="text-center px-8 z-10">
+                                <i class="ph-fill ph-drop text-[80px] text-neon-pink mb-4 animate-float"></i>
+                                <h3 class="font-display text-5xl md:text-6xl text-white leading-tight">POUR IT UP,<br>DRINK IT DOWN.</h3>
                             </div>
-
-                            <div class="absolute top-6 left-6 bg-neon-lime text-black font-hype text-xl px-4 py-1 rotate-[-10deg]" vid="276">EST. BX</div>
-                            <div class="absolute bottom-6 right-6 bg-neon-cyan text-black font-hype text-xl px-4 py-1 rotate-[5deg]" vid="277">GOOD VIBES ONLY</div>
+                            <div class="absolute top-5 left-5 bg-neon-lime text-deep-900 font-hype text-base px-4 py-1 rotate-[-8deg] shadow-lg">EST. BX</div>
+                            <div class="absolute bottom-5 right-5 bg-neon-cyan text-deep-900 font-hype text-base px-4 py-1 rotate-[4deg] shadow-lg">GOOD VIBES ONLY</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="order-1 lg:order-2" vid="278">
-                    <h2 class="font-display text-6xl md:text-8xl text-white mb-6" vid="279">THE<br vid="280"><span class="text-transparent text-outline-thick glow-lime" vid="281">BRONX</span> VIBE</h2>
+                <div class="order-1 lg:order-2 reveal reveal-delay-2">
+                    <p class="font-hype text-sm tracking-[0.4em] text-neon-lime mb-4">— THE STORY —</p>
+                    <h2 class="font-display text-6xl md:text-8xl text-white mb-8 leading-none">THE<br><span class="text-outline-thick glow-lime">BRONX</span> VIBE</h2>
 
-                    <div class="space-y-8 font-body text-xl text-gray-300 font-light leading-relaxed" vid="282">
-                        <p class="pl-6 border-l-2 border-neon-pink" vid="283">
-                            Beba Slushies ain't just a drink, it's a whole vibe. Born in the BX, we bring the Miami club energy straight to your block. Too cold, too sweet, y con piquete.
+                    <div class="space-y-6 font-body text-lg text-white/50 font-light leading-relaxed">
+                        <p class="pl-5 border-l border-neon-pink/60">
+                            Beba Slushies ain't just a drink, it's a whole vibe. Born in the BX, we bring the energy straight to your block. Too cold, too sweet, y con piquete.
                         </p>
-                        <p vid="284">
-                            Whether you're chilling on the stoop, pulling up to a function, or just need to beat the heat—we got the premium slushies that hit different. Hecho con good vibes and the best ingredients.
+                        <p>
+                            Whether you're chilling on the stoop, pulling up to a function, or just need to beat the heat — we got the premium slushies that hit different. Hecho con good vibes and the best ingredients.
                         </p>
                     </div>
 
-                    <div class="mt-12 flex flex-wrap gap-6" vid="285">
-                        <a href="https://instagram.com/beba.slushies" class="group flex items-center gap-3 px-8 py-4 bg-dark-800 border border-white/20 rounded-full hover:border-neon-pink transition-all" vid="286">
-                            <i class="ph-fill ph-instagram-logo text-3xl text-gray-400 group-hover:text-neon-pink transition-colors" vid="287"></i>
-                            <span class="font-hype text-2xl tracking-widest text-white" vid="288">@BEBA.SLUSHIES</span>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <a href="https://instagram.com/beba.slushies" class="glass-card gradient-border rounded-full flex items-center gap-3 px-7 py-3.5 hover:border-neon-pink/30">
+                            <i class="ph-fill ph-instagram-logo text-2xl text-white/50"></i>
+                            <span class="font-hype text-xl tracking-widest">@BEBA.SLUSHIES</span>
                         </a>
-                        <a href="#" class="group flex items-center gap-3 px-8 py-4 bg-dark-800 border border-white/20 rounded-full hover:border-white transition-all" vid="289">
-                            <i class="ph-fill ph-tiktok-logo text-3xl text-gray-400 group-hover:text-white transition-colors" vid="290"></i>
-                            <span class="font-hype text-2xl tracking-widest text-white" vid="291">TIKTOK</span>
+                        <a href="#" class="glass-card gradient-border rounded-full flex items-center gap-3 px-7 py-3.5">
+                            <i class="ph-fill ph-tiktok-logo text-2xl text-white/50"></i>
+                            <span class="font-hype text-xl tracking-widest">TIKTOK</span>
                         </a>
                     </div>
                 </div>
@@ -495,47 +601,72 @@
         </div>
     </section>
 
-    <footer id="order" class="bg-dark-900 pt-32 pb-12 relative border-t-[10px] border-neon-lime" vid="292">
-        <div class="max-w-[1000px] mx-auto px-4 text-center relative z-10" vid="293">
+    <!-- Footer / Order -->
+    <footer id="order" class="pt-28 pb-12 relative border-t border-neon-lime/30">
+        <div class="absolute inset-0 bg-gradient-to-t from-deep-900 via-deep-800/50 to-transparent pointer-events-none"></div>
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-gradient-to-b from-neon-lime/50 to-transparent"></div>
 
-            <div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-neon-lime/10 border border-neon-lime mb-8" vid="294">
-                <i class="ph-fill ph-map-pin text-5xl text-neon-lime animate-bounce" vid="295"></i>
+        <div class="max-w-[900px] mx-auto px-4 text-center relative z-10">
+
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-neon-lime/30 bg-neon-lime/5 mb-8 reveal">
+                <i class="ph-fill ph-map-pin text-3xl text-neon-lime animate-bounce"></i>
             </div>
 
-            <h2 class="font-display text-6xl md:text-[100px] leading-none text-white mb-6" vid="296">
-                LOCATED IN<br vid="297">
-                <span class="text-neon-cyan text-outline-thick glow-cyan" vid="298">BX, NYC</span>
+            <h2 class="font-display text-5xl md:text-8xl leading-none text-white mb-4 reveal reveal-delay-1">
+                LOCATED IN<br>
+                <span class="text-neon-cyan glow-cyan">BX, NYC</span>
             </h2>
 
-            <p class="font-body text-2xl text-gray-400 mb-16 font-light" vid="299">
+            <p class="font-body text-lg text-white/30 mb-14 font-light tracking-wide reveal reveal-delay-2">
                 Ready to get your hands on the best slushies in the borough?
             </p>
 
-            <a href="sms:347-375-3948" class="group relative inline-flex items-center justify-center w-full sm:w-auto px-16 py-6 font-display text-4xl sm:text-5xl text-black bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_30px_rgba(255,45,149,0.5)]" vid="300">
-                <span class="absolute inset-0 w-full h-full bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" vid="301"></span>
-                <span class="relative z-10 group-hover:text-neon-pink transition-colors" vid="302">TEXT TO ORDER</span>
+            <a href="sms:347-375-3948"
+               class="group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(255,45,149,0.5)] rounded-sm reveal reveal-delay-3">
+                <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                <span class="relative z-10 group-hover:text-neon-pink transition-colors">TEXT TO ORDER</span>
             </a>
 
-            <div class="mt-12 flex items-center justify-center gap-4 font-hype text-2xl tracking-widest text-gray-500" vid="303">
-                <div class="w-12 h-[1px] bg-gray-700" vid="304"></div>
-                <span vid="305">OR HIT THE DM</span>
-                <div class="w-12 h-[1px] bg-gray-700" vid="306"></div>
+            <div class="mt-10 flex items-center justify-center gap-4 font-hype text-lg tracking-[0.3em] text-white/20 reveal reveal-delay-4">
+                <div class="w-10 h-px bg-white/10"></div>
+                <span>OR HIT THE DM</span>
+                <div class="w-10 h-px bg-white/10"></div>
             </div>
 
-            <div class="mt-32 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6" vid="307">
-                <div class="font-display text-3xl text-white" vid="308">
-                    BEBA<span class="text-neon-pink" vid="309">SLUSHIE</span>
-                </div>
-                <p class="font-body text-sm text-gray-600 font-light uppercase tracking-widest" vid="310">
+            <div class="mt-24 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+                <img src="logo.png" alt="Beba Slushie" class="h-12 w-auto opacity-70">
+                <p class="font-body text-xs text-white/20 uppercase tracking-[0.2em]">
                     © 2024 Beba Slushies. BX, NYC.
                 </p>
-                <div class="flex gap-6" vid="311">
-                    <a href="#" class="text-gray-600 hover:text-white transition-colors" vid="312"><i class="ph-fill ph-instagram-logo text-3xl" vid="313"></i></a>
-                    <a href="#" class="text-gray-600 hover:text-white transition-colors" vid="314"><i class="ph-fill ph-tiktok-logo text-3xl" vid="315"></i></a>
+                <div class="flex gap-5">
+                    <a href="https://instagram.com/beba.slushies" class="text-white/20 hover:text-neon-pink transition-colors"><i class="ph-fill ph-instagram-logo text-2xl"></i></a>
+                    <a href="#" class="text-white/20 hover:text-white transition-colors"><i class="ph-fill ph-tiktok-logo text-2xl"></i></a>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script>
+        // Custom cursor
+        const cursor = document.getElementById('cursor');
+        const ring = document.getElementById('cursor-ring');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top  = e.clientY + 'px';
+            ring.style.left   = e.clientX + 'px';
+            ring.style.top    = e.clientY + 'px';
+        });
 
-</body></html>
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
