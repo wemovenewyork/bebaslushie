@@ -99,6 +99,27 @@
         /* Mobile menu */
         #mobile-menu { display:none; }
         #mobile-menu.open { display:block; }
+
+        /* ── 1. Sticky nav frost ── */
+        nav { transition: background .35s ease, box-shadow .35s ease, border-color .35s ease; }
+        nav.nav-scrolled { background: rgba(6,4,16,.97) !important; box-shadow: 0 2px 40px rgba(0,0,0,.6); border-bottom-color: rgba(255,45,149,.15) !important; }
+
+        /* ── 3. CTA pulse ── */
+        @keyframes cta-pulse {
+            0%,100% { box-shadow: 0 0 20px rgba(255,45,149,.3), 0 0 60px rgba(255,45,149,.1); }
+            50%      { box-shadow: 0 0 40px rgba(255,45,149,.7), 0 0 100px rgba(255,45,149,.25); }
+        }
+        .cta-pulse { animation: cta-pulse 2.5s ease-in-out infinite; }
+
+        /* ── 5. Wave separators ── */
+        .wave-sep { position:absolute; inset-x:0; height:36px; overflow:hidden; pointer-events:none; z-index:2; }
+        .wave-sep.top { top:-1px; }
+        .wave-sep.bot { bottom:-1px; transform:scaleY(-1); }
+        @keyframes wave-pulse { 0%,100%{opacity:.45;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(2.2)} }
+        .wave-sep svg { width:100%;height:36px;animation:wave-pulse 4s ease-in-out infinite;transform-origin:center center; }
+
+        /* ── 2. Extra stagger delay ── */
+        .reveal-delay-6 { transition-delay:.6s; }
     </style>
 </head>
 <body class="font-body antialiased selection:bg-neon-pink selection:text-white">
@@ -107,7 +128,7 @@
     <div id="cursor-ring"></div>
 
     <!-- ── NAV ── -->
-    <nav class="fixed w-full z-40 top-0 bg-deep-900/80 backdrop-blur-2xl border-b border-white/5">
+    <nav class="fixed w-full z-40 top-0 bg-transparent backdrop-blur-xl border-b border-transparent">
         <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="#"><img src="logo.png" alt="Beba Slushie" class="h-14 w-auto"></a>
@@ -158,10 +179,10 @@
 
         <div class="relative z-10 flex flex-col items-center text-center px-4 gap-8">
             <img src="logo.png" alt="Beba Slushie" class="w-64 sm:w-80 md:w-[420px] animate-float drop-shadow-[0_0_60px_rgba(255,45,149,.4)]">
-            <h2 class="font-hype text-4xl sm:text-5xl md:text-7xl tracking-[.15em] flex flex-wrap justify-center items-center gap-3 sm:gap-6">
-                <span class="text-white glow-pink">CHILL.</span>
-                <span class="text-neon-cyan glow-cyan">SIP.</span>
-                <span class="text-neon-lime glow-lime">TURN UP.</span>
+            <h2 id="hero-tagline" class="font-hype text-4xl sm:text-5xl md:text-7xl tracking-[.15em] flex flex-wrap justify-center items-center gap-3 sm:gap-6">
+                <span class="text-white glow-pink" data-text="CHILL.">CHILL.</span>
+                <span class="text-neon-cyan glow-cyan" data-text="SIP.">SIP.</span>
+                <span class="text-neon-lime glow-lime" data-text="TURN UP.">TURN UP.</span>
             </h2>
             <p class="font-body text-base sm:text-lg text-white/40 tracking-[.25em] uppercase">La Presión Del Verano &nbsp;·&nbsp; BX, NYC</p>
             <a href="#menu" class="mt-4 group flex items-center gap-2 font-hype text-xl tracking-widest text-white/60 hover:text-white transition-colors">
@@ -289,7 +310,7 @@
                 </div>
 
                 <!-- Fresa Fuego -->
-                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-1">
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-4">
                     <div class="absolute top-0 right-0 w-56 h-56 bg-neon-pink/10 rounded-full blur-[80px] pointer-events-none"></div>
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
@@ -307,7 +328,7 @@
                 </div>
 
                 <!-- Parcha Party -->
-                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-2">
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-5">
                     <div class="absolute top-0 right-0 w-56 h-56 bg-neon-violet/10 rounded-full blur-[80px] pointer-events-none"></div>
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
@@ -325,7 +346,7 @@
                 </div>
 
                 <!-- Coco Loco -->
-                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between xl:-translate-y-6 reveal reveal-delay-3">
+                <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between xl:-translate-y-6 reveal reveal-delay-6">
                     <div class="absolute top-0 right-0 w-56 h-56 bg-white/5 rounded-full blur-[80px] pointer-events-none"></div>
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
@@ -348,7 +369,7 @@
 
     <!-- ── HOW IT WORKS ── -->
     <section id="how" class="py-24 relative">
-        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="wave-sep top"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#FF2D95" stop-opacity=".5"/><stop offset="70%" stop-color="#00E5FF" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C180,6 360,30 540,18 C720,6 900,30 1080,18 C1260,6 1440,30 1440,18" fill="none" stroke="url(#wg1)" stroke-width="1.5"/></svg></div>
         <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
 
         <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -392,7 +413,7 @@
                 </a>
             </div>
         </div>
-        <div class="divider absolute bottom-0 inset-x-0"></div>
+        <div class="wave-sep bot"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#00E5FF" stop-opacity=".5"/><stop offset="70%" stop-color="#C4FF00" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C180,6 360,30 540,18 C720,6 900,30 1080,18 C1260,6 1440,30 1440,18" fill="none" stroke="url(#wg2)" stroke-width="1.5"/></svg></div>
     </section>
 
     <!-- ── FUNDITAS ── -->
@@ -472,7 +493,7 @@
 
     <!-- ── FIND US / HOURS ── -->
     <section id="findus" class="py-24 relative">
-        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="wave-sep top"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#C4FF00" stop-opacity=".5"/><stop offset="70%" stop-color="#FF2D95" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C180,30 360,6 540,18 C720,30 900,6 1080,18 C1260,30 1440,6 1440,18" fill="none" stroke="url(#wg3)" stroke-width="1.5"/></svg></div>
         <div class="absolute inset-0 bg-gradient-to-br from-deep-800 via-deep-900 to-deep-800 pointer-events-none"></div>
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-neon-lime/5 rounded-full blur-[120px] pointer-events-none"></div>
 
@@ -537,7 +558,7 @@
 
             </div>
         </div>
-        <div class="divider absolute bottom-0 inset-x-0"></div>
+        <div class="wave-sep bot"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg4" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#8B3FD9" stop-opacity=".5"/><stop offset="70%" stop-color="#C4FF00" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C180,30 360,6 540,18 C720,30 900,6 1080,18 C1260,30 1440,6 1440,18" fill="none" stroke="url(#wg4)" stroke-width="1.5"/></svg></div>
     </section>
 
     <!-- ── CATERING & EVENTS ── -->
@@ -594,7 +615,7 @@
 
     <!-- ── SOCIAL PROOF ── -->
     <section class="py-24 relative">
-        <div class="divider absolute top-0 inset-x-0"></div>
+        <div class="wave-sep top"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#FF5E00" stop-opacity=".5"/><stop offset="70%" stop-color="#FF2D95" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C240,4 480,32 720,18 C960,4 1200,32 1440,18" fill="none" stroke="url(#wg5)" stroke-width="1.5"/></svg></div>
         <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
 
         <div class="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -665,7 +686,7 @@
                 </a>
             </div>
         </div>
-        <div class="divider absolute bottom-0 inset-x-0"></div>
+        <div class="wave-sep bot"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg6" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#FFD700" stop-opacity=".5"/><stop offset="70%" stop-color="#FF5E00" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C240,4 480,32 720,18 C960,4 1200,32 1440,18" fill="none" stroke="url(#wg6)" stroke-width="1.5"/></svg></div>
     </section>
 
     <!-- ── THE VIBE ── -->
@@ -728,7 +749,7 @@
             </h2>
             <p class="font-body text-lg text-white/30 mb-14 font-light tracking-wide reveal reveal-delay-2">Ready to get your hands on the best slushies in the borough?</p>
 
-            <a href="sms:3473753948" class="group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(255,45,149,.5)] rounded-sm reveal reveal-delay-3">
+            <a href="sms:3473753948" class="cta-pulse group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 rounded-sm reveal reveal-delay-3">
                 <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                 <span class="relative z-10 group-hover:text-neon-pink transition-colors">TEXT TO ORDER</span>
             </a>
@@ -775,6 +796,31 @@
             mobileMenu.classList.remove('open');
             menuIcon.className = 'ph ph-list text-3xl';
         }
+
+        // ── 1. Sticky nav frost ──
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // ── 4. Text scramble on hero ──
+        const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%&*+?';
+        function scramble(el) {
+            const original = el.dataset.text;
+            let iter = 0;
+            const iv = setInterval(() => {
+                el.textContent = original.split('').map((ch, i) => {
+                    if (ch === ' ' || ch === '.') return ch;
+                    if (i < iter) return original[i];
+                    return CHARS[Math.floor(Math.random() * CHARS.length)];
+                }).join('');
+                iter += 0.35;
+                if (iter >= original.length) { el.textContent = original; clearInterval(iv); }
+            }, 35);
+        }
+        document.querySelectorAll('[data-text]').forEach((el, i) => {
+            setTimeout(() => scramble(el), 400 + i * 380);
+        });
 
         // Scroll reveal
         const observer = new IntersectionObserver(entries => {
