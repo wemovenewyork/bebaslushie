@@ -242,13 +242,14 @@
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         // ORDER FORM
+        // TODO: confirm actual prices before deploy
         const FLAVORS = [
-            { id: 'pina',   name: 'PIÑA PERREO',     hex: '#FF5E00' },
-            { id: 'mango',  name: 'MANGO MAMACITA',   hex: '#FFD700' },
-            { id: 'blue',   name: 'BLUE BANDIDA',     hex: '#00E5FF' },
-            { id: 'fresa',  name: 'FRESA FUEGO',      hex: '#FF2D95' },
-            { id: 'parcha', name: 'PARCHA PARTY',     hex: '#8B3FD9' },
-            { id: 'coco',   name: 'COCO LOCO',        hex: '#e8e8e8' },
+            { id: 'pina',   name: 'PIÑA PERREO',     hex: '#FF5E00', price: '$8' },
+            { id: 'mango',  name: 'MANGO MAMACITA',   hex: '#FFD700', price: '$8' },
+            { id: 'blue',   name: 'BLUE BANDIDA',     hex: '#00E5FF', price: '$8' },
+            { id: 'fresa',  name: 'FRESA FUEGO',      hex: '#FF2D95', price: '$8' },
+            { id: 'parcha', name: 'PARCHA PARTY',     hex: '#8B3FD9', price: '$8' },
+            { id: 'coco',   name: 'COCO LOCO',        hex: '#e8e8e8', price: '$8' },
         ];
         const qtys = {};
         FLAVORS.forEach(f => qtys[f.id] = 0);
@@ -261,7 +262,9 @@
                 <div class="glass-card rounded-2xl p-5 flex flex-col items-center gap-3 border-2 border-transparent transition-all duration-300" id="card-${f.id}">
                     <p class="font-hype text-base tracking-widest text-white text-center leading-tight">${f.name}</p>
                     <div class="w-10 h-1 rounded-full" style="background:${f.hex}"></div>
-                    <div class="flex items-center gap-3 mt-1">
+                    <!-- TODO: confirm actual price -->
+                    <p class="font-hype text-xl tracking-widest" style="color:${f.hex}">${f.price}</p>
+                    <div class="flex items-center gap-3">
                         <button type="button" onclick="adjustQty('${f.id}',-1)" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-2xl">−</button>
                         <span id="qty-${f.id}" class="font-hype text-2xl text-white w-8 text-center">0</span>
                         <button type="button" onclick="adjustQty('${f.id}',1)" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-2xl">+</button>
