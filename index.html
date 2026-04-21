@@ -145,7 +145,7 @@
 
                 <div class="flex items-center gap-3">
                     <a href="tel:3473753948" class="hidden md:block font-hype text-lg tracking-widest text-white/40 hover:text-neon-cyan transition-colors">347-375-3948</a>
-                    <a href="#order-online" class="px-4 py-2 md:px-6 md:py-2.5 font-hype text-sm md:text-lg tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 hover:shadow-[0_0_24px_rgba(255,45,149,.6)] hover:-translate-y-0.5">ORDER NOW</a>
+                    <a href="order.html" class="px-4 py-2 md:px-6 md:py-2.5 font-hype text-sm md:text-lg tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 hover:shadow-[0_0_24px_rgba(255,45,149,.6)] hover:-translate-y-0.5">ORDER NOW</a>
                     <button id="menu-btn" class="lg:hidden text-white/60 hover:text-neon-pink p-2">
                         <i id="menu-icon" class="ph ph-list text-3xl"></i>
                     </button>
@@ -167,7 +167,7 @@
                 <a href="tel:3473753948" class="flex items-center gap-3 font-hype text-2xl tracking-widest text-neon-cyan">
                     <i class="ph-fill ph-phone text-xl"></i> 347-375-3948
                 </a>
-                <a href="#order-online" onclick="closeMobileMenu()" class="w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink">ORDER NOW</a>
+                <a href="order.html" onclick="closeMobileMenu()" class="w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink">ORDER NOW</a>
             </div>
         </div>
     </nav>
@@ -411,7 +411,7 @@
             </div>
 
             <div class="mt-12 text-center reveal reveal-delay-4">
-                <a href="#order-online" class="inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-cyan px-10 py-4 hover:bg-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,229,255,.5)] hover:-translate-y-0.5">
+                <a href="order.html" class="inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-cyan px-10 py-4 hover:bg-white transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,229,255,.5)] hover:-translate-y-0.5">
                     <i class="ph-fill ph-storefront text-2xl"></i> ORDER ONLINE
                 </a>
             </div>
@@ -778,7 +778,7 @@
             </div>
 
             <div class="mt-10 text-center reveal reveal-delay-3">
-                <a href="#order-online" class="inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-yellow px-10 py-4 hover:bg-white transition-all duration-300 hover:-translate-y-0.5" style="hover:box-shadow:0 0 30px rgba(255,215,0,.5)">
+                <a href="order.html" class="inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-yellow px-10 py-4 hover:bg-white transition-all duration-300 hover:-translate-y-0.5" style="hover:box-shadow:0 0 30px rgba(255,215,0,.5)">
                     <i class="ph-fill ph-lightning text-2xl"></i> START EARNING NOW
                 </a>
                 <p class="font-body text-xs text-white/20 mt-4 uppercase tracking-widest">Powered by Square Loyalty — launching soon</p>
@@ -841,102 +841,6 @@
         </div>
     </section>
 
-    <!-- ── ORDER ONLINE ── -->
-    <section id="order-online" class="py-24 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-[500px] h-[500px] bg-neon-pink/8 rounded-full blur-[150px] pointer-events-none"></div>
-        <div class="absolute bottom-0 right-0 w-[400px] h-[400px] bg-neon-cyan/8 rounded-full blur-[120px] pointer-events-none"></div>
-
-        <div class="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 reveal">
-                <p class="font-hype text-sm tracking-[.4em] text-neon-pink mb-3">— SKIP THE LINE —</p>
-                <h2 class="font-display text-5xl md:text-7xl text-white leading-none">ORDER<br><span class="text-neon-pink glow-pink">ONLINE</span></h2>
-                <p class="font-body text-white/40 mt-4">Pick your flavors, drop your info, pay securely via Square.</p>
-            </div>
-
-            <form id="order-form" class="space-y-10">
-
-                <!-- Step 1: Flavors -->
-                <div class="reveal">
-                    <p class="font-hype text-lg tracking-widest text-neon-cyan mb-6">01 — PICK YOUR FLAVORS</p>
-                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="flavor-grid"></div>
-                    <div class="mt-4 glass-card rounded-2xl p-5 flex items-center justify-between">
-                        <div>
-                            <p class="font-hype text-xl tracking-widest text-white">HELADOS DE FUNDITAS</p>
-                            <p class="font-body text-sm text-white/40">$3 each &nbsp;·&nbsp; 2 for $5</p>
-                        </div>
-                        <div class="flex items-center gap-3">
-                            <button type="button" onclick="adjustQty('funditas',-1)" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-xl">−</button>
-                            <span id="qty-funditas" class="font-hype text-2xl text-white w-6 text-center">0</span>
-                            <button type="button" onclick="adjustQty('funditas',1)" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-xl">+</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2: Pickup or Delivery -->
-                <div class="reveal reveal-delay-1">
-                    <p class="font-hype text-lg tracking-widest text-neon-cyan mb-6">02 — PICKUP OR DELIVERY</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <button type="button" onclick="setOrderType('pickup')" id="btn-pickup" class="glass-card rounded-2xl p-6 text-center border-2 border-transparent transition-all duration-300">
-                            <i class="ph-fill ph-storefront text-4xl text-white/40 mb-3 block"></i>
-                            <p class="font-hype text-xl tracking-widest text-white">PICKUP</p>
-                            <p class="font-body text-sm text-white/30 mt-1">Bronx, NYC</p>
-                        </button>
-                        <button type="button" onclick="setOrderType('delivery')" id="btn-delivery" class="glass-card rounded-2xl p-6 text-center border-2 border-transparent transition-all duration-300">
-                            <i class="ph-fill ph-motorcycle text-4xl text-white/40 mb-3 block"></i>
-                            <p class="font-hype text-xl tracking-widest text-white">DELIVERY</p>
-                            <p class="font-body text-sm text-white/30 mt-1">Bronx & Uptown Manhattan</p>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Step 3: Your Info -->
-                <div class="reveal reveal-delay-2">
-                    <p class="font-hype text-lg tracking-widest text-neon-cyan mb-6">03 — YOUR INFO</p>
-                    <div class="space-y-4">
-                        <input type="text" id="input-name" placeholder="FULL NAME" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors">
-                        <input type="tel" id="input-phone" placeholder="PHONE NUMBER" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors">
-                        <div id="address-field" class="hidden">
-                            <input type="text" id="input-address" placeholder="DELIVERY ADDRESS" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors">
-                        </div>
-                        <textarea id="input-notes" placeholder="SPECIAL NOTES (OPTIONAL)" rows="3" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors resize-none"></textarea>
-                    </div>
-                </div>
-
-                <!-- Submit -->
-                <div class="reveal reveal-delay-3 text-center">
-                    <button type="submit" class="cta-pulse w-full sm:w-auto px-14 py-5 font-display text-4xl text-deep-900 bg-neon-pink hover:bg-white hover:text-neon-pink transition-all duration-300 rounded-sm">
-                        PLACE ORDER
-                    </button>
-                    <p class="font-body text-xs text-white/20 mt-4 uppercase tracking-widest">You'll complete payment securely via Square.</p>
-                </div>
-
-            </form>
-        </div>
-    </section>
-
-    <!-- ── ORDER CONFIRMATION MODAL ── -->
-    <div id="confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(6,4,16,.95);backdrop-filter:blur(20px);">
-        <div class="glass-card rounded-3xl p-8 max-w-md w-full border border-neon-pink/20">
-            <div class="text-center mb-6">
-                <i class="ph-fill ph-check-circle text-6xl text-neon-lime mb-4 block"></i>
-                <h3 class="font-display text-4xl text-white">ORDER RECEIVED</h3>
-                <p class="font-body text-white/40 mt-2 text-sm">Review your order then complete payment below.</p>
-            </div>
-            <div id="order-summary" class="bg-white/5 rounded-2xl p-5 mb-6 space-y-2 font-body text-sm"></div>
-            <div class="space-y-3">
-                <a id="pay-square-btn" href="https://square.link/u/svMeAQ8W?src=sheet" target="_blank" class="block w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 rounded-xl">
-                    PAY WITH SQUARE
-                </a>
-                <a id="sms-order-btn" href="#" class="block w-full text-center py-3 font-hype text-lg tracking-widest text-white/50 hover:text-white border border-white/10 hover:border-white/30 rounded-xl transition-all">
-                    <i class="ph-fill ph-chat-circle mr-2"></i> SEND ORDER VIA TEXT
-                </a>
-                <button onclick="closeOrderModal()" class="block w-full text-center py-3 font-hype text-lg tracking-widest text-white/20 hover:text-white/50 transition-colors">
-                    CLOSE
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- ── FOOTER / ORDER ── -->
     <footer id="order" class="pt-28 pb-12 relative border-t border-neon-lime/30">
         <div class="absolute inset-0 bg-gradient-to-t from-deep-900 via-deep-800/50 to-transparent pointer-events-none"></div>
@@ -952,7 +856,7 @@
             </h2>
             <p class="font-body text-lg text-white/30 mb-14 font-light tracking-wide reveal reveal-delay-2">Ready to get your hands on the best slushies in the borough?</p>
 
-            <a href="#order-online" class="cta-pulse group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 rounded-sm reveal reveal-delay-3">
+            <a href="order.html" class="cta-pulse group relative inline-flex items-center justify-center w-full sm:w-auto px-14 py-5 font-display text-4xl sm:text-5xl text-deep-900 bg-neon-pink overflow-hidden transition-all duration-300 hover:scale-105 rounded-sm reveal reveal-delay-3">
                 <span class="absolute inset-0 bg-white scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
                 <span class="relative z-10 group-hover:text-neon-pink transition-colors">ORDER ONLINE</span>
             </a>
@@ -1030,95 +934,6 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // ── ONLINE ORDER FORM ──
-        const FLAVORS = [
-            { id: 'pina',   name: 'PIÑA PERREO',     hex: '#FF5E00' },
-            { id: 'mango',  name: 'MANGO MAMACITA',   hex: '#FFD700' },
-            { id: 'blue',   name: 'BLUE BANDIDA',     hex: '#00E5FF' },
-            { id: 'fresa',  name: 'FRESA FUEGO',      hex: '#FF2D95' },
-            { id: 'parcha', name: 'PARCHA PARTY',     hex: '#8B3FD9' },
-            { id: 'coco',   name: 'COCO LOCO',        hex: '#e8e8e8' },
-        ];
-        const qtys = {};
-        FLAVORS.forEach(f => qtys[f.id] = 0);
-        qtys['funditas'] = 0;
-        let orderType = null;
-
-        // Build flavor grid
-        const flavorGrid = document.getElementById('flavor-grid');
-        FLAVORS.forEach(f => {
-            flavorGrid.insertAdjacentHTML('beforeend', `
-                <div class="glass-card rounded-2xl p-5 flex flex-col items-center gap-3 border-2 border-transparent transition-all duration-300" id="card-${f.id}">
-                    <p class="font-hype text-base tracking-widest text-white text-center leading-tight">${f.name}</p>
-                    <div class="w-10 h-1 rounded-full" style="background:${f.hex}"></div>
-                    <div class="flex items-center gap-3 mt-1">
-                        <button type="button" onclick="adjustQty('${f.id}',-1)" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-xl">−</button>
-                        <span id="qty-${f.id}" class="font-hype text-2xl text-white w-6 text-center">0</span>
-                        <button type="button" onclick="adjustQty('${f.id}',1)" class="w-9 h-9 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-xl">+</button>
-                    </div>
-                </div>`);
-        });
-
-        function adjustQty(id, delta) {
-            qtys[id] = Math.max(0, qtys[id] + delta);
-            document.getElementById('qty-' + id).textContent = qtys[id];
-            const card = document.getElementById('card-' + id);
-            if (card) {
-                card.style.borderColor = qtys[id] > 0 ? 'rgba(255,45,149,.4)' : 'transparent';
-            }
-        }
-
-        function setOrderType(type) {
-            orderType = type;
-            const pu = document.getElementById('btn-pickup');
-            const de = document.getElementById('btn-delivery');
-            pu.style.borderColor = type === 'pickup'   ? '#FF2D95' : 'transparent';
-            de.style.borderColor = type === 'delivery' ? '#00E5FF' : 'transparent';
-            document.getElementById('address-field').classList.toggle('hidden', type !== 'delivery');
-        }
-
-        document.getElementById('order-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const name    = document.getElementById('input-name').value.trim();
-            const phone   = document.getElementById('input-phone').value.trim();
-            const address = document.getElementById('input-address').value.trim();
-            const notes   = document.getElementById('input-notes').value.trim();
-
-            const totalItems = Object.values(qtys).reduce((a,b) => a+b, 0);
-            if (totalItems === 0)                           { alert('Please select at least one item.');       return; }
-            if (!orderType)                                 { alert('Please select Pickup or Delivery.');      return; }
-            if (!name)                                      { alert('Please enter your name.');                return; }
-            if (!phone)                                     { alert('Please enter your phone number.');        return; }
-            if (orderType === 'delivery' && !address)       { alert('Please enter your delivery address.');   return; }
-
-            const items = [];
-            FLAVORS.forEach(f => { if (qtys[f.id] > 0) items.push(f.name + ' x' + qtys[f.id]); });
-            if (qtys.funditas > 0) items.push('HELADOS DE FUNDITAS x' + qtys.funditas);
-
-            document.getElementById('order-summary').innerHTML = `
-                <div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Items</span><span class="text-white text-right">${items.join(', ')}</span></div>
-                <div class="flex justify-between"><span class="text-white/40">Type</span><span class="text-white">${orderType.toUpperCase()}</span></div>
-                <div class="flex justify-between"><span class="text-white/40">Name</span><span class="text-white">${name}</span></div>
-                <div class="flex justify-between"><span class="text-white/40">Phone</span><span class="text-white">${phone}</span></div>
-                ${address ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Address</span><span class="text-white text-right">${address}</span></div>` : ''}
-                ${notes   ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Notes</span><span class="text-white text-right">${notes}</span></div>`   : ''}
-            `;
-
-            let smsBody = `NEW BEBA SLUSHIE ORDER\nItems: ${items.join(', ')}\nType: ${orderType.toUpperCase()}\nName: ${name}\nPhone: ${phone}`;
-            if (address) smsBody += `\nAddress: ${address}`;
-            if (notes)   smsBody += `\nNotes: ${notes}`;
-            document.getElementById('sms-order-btn').href = `sms:3473753948?body=${encodeURIComponent(smsBody)}`;
-
-            const modal = document.getElementById('confirm-modal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        });
-
-        function closeOrderModal() {
-            const modal = document.getElementById('confirm-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
     </script>
 </body>
 </html>

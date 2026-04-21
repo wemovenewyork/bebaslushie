@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online | Beba Slushie | BX NYC</title>
+
+    <meta property="og:title" content="Order Online | Beba Slushie">
+    <meta property="og:description" content="Order premium Beba Slushies online. Pick your flavors, choose pickup or delivery, pay securely via Square.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="description" content="Order Beba Slushies online — 6 signature flavors + Helados de Funditas. Pickup or delivery in the Bronx & Uptown Manhattan.">
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧊</text></svg>">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neon: { pink:'#FF2D95', cyan:'#00E5FF', lime:'#C4FF00', violet:'#8B3FD9', orange:'#FF5E00', yellow:'#FFD700' },
+                        deep: { 900:'#060410', 800:'#0D0920', 700:'#150E2E' }
+                    },
+                    fontFamily: {
+                        display:['"Luckiest Guy"','cursive'],
+                        hype:['"Bebas Neue"','sans-serif'],
+                        body:['"Outfit"','sans-serif'],
+                    },
+                    animation: {
+                        'blob':'blob 8s ease-in-out infinite',
+                        'blob2':'blob 10s ease-in-out infinite 2s',
+                    },
+                    keyframes: {
+                        blob:{'0%,100%':{transform:'translate(0,0) scale(1)'},'33%':{transform:'translate(40px,-30px) scale(1.1)'},'66%':{transform:'translate(-20px,20px) scale(0.95)'}},
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * { cursor: none !important; }
+        #cursor { position:fixed;width:18px;height:18px;border-radius:50%;background:#FF2D95;box-shadow:0 0 12px #FF2D95,0 0 24px rgba(255,45,149,.5);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s; }
+        #cursor-ring { position:fixed;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,45,149,.5);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:left .12s ease,top .12s ease,width .2s,height .2s,border-color .2s; }
+        body:has(a:hover) #cursor,body:has(button:hover) #cursor { width:28px;height:28px;background:#00E5FF;box-shadow:0 0 16px #00E5FF; }
+        body:has(a:hover) #cursor-ring,body:has(button:hover) #cursor-ring { width:56px;height:56px;border-color:rgba(0,229,255,.5); }
+
+        body { background-color:#060410;color:white;overflow-x:hidden; }
+
+        .glow-pink { text-shadow:0 0 20px rgba(255,45,149,.7),0 0 50px rgba(255,45,149,.3); }
+
+        ::-webkit-scrollbar { width:6px; }
+        ::-webkit-scrollbar-track { background:#060410; }
+        ::-webkit-scrollbar-thumb { background:#FF2D95;border-radius:3px; }
+
+        .glass-card { background:rgba(255,255,255,.03);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08);transition:all .4s cubic-bezier(.23,1,.32,1); }
+        .glass-card:hover { background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15);transform:translateY(-4px);box-shadow:0 24px 60px rgba(0,0,0,.4); }
+
+        .divider { height:1px;background:linear-gradient(to right,transparent,rgba(255,45,149,.4),rgba(0,229,255,.4),transparent); }
+
+        .reveal { opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease; }
+        .reveal.visible { opacity:1;transform:translateY(0); }
+        .reveal-delay-1 { transition-delay:.1s; }
+        .reveal-delay-2 { transition-delay:.2s; }
+        .reveal-delay-3 { transition-delay:.3s; }
+
+        @keyframes cta-pulse {
+            0%,100% { box-shadow: 0 0 20px rgba(255,45,149,.3), 0 0 60px rgba(255,45,149,.1); }
+            50%      { box-shadow: 0 0 40px rgba(255,45,149,.7), 0 0 100px rgba(255,45,149,.25); }
+        }
+        .cta-pulse { animation: cta-pulse 2.5s ease-in-out infinite; }
+
+        nav { transition: background .35s ease, box-shadow .35s ease, border-color .35s ease; }
+        nav.nav-scrolled { background: rgba(6,4,16,.97) !important; box-shadow: 0 2px 40px rgba(0,0,0,.6); border-bottom-color: rgba(255,45,149,.15) !important; }
+    </style>
+</head>
+<body class="font-body antialiased selection:bg-neon-pink selection:text-white">
+
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <!-- NAV -->
+    <nav class="fixed w-full z-40 top-0 bg-transparent backdrop-blur-xl border-b border-transparent">
+        <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <a href="index.html"><img src="logo.png" alt="Beba Slushie" class="h-14 w-auto"></a>
+                <div class="flex items-center gap-6">
+                    <a href="index.html" class="font-hype text-lg tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
+                        <i class="ph ph-arrow-left"></i> BACK TO HOME
+                    </a>
+                    <a href="tel:3473753948" class="hidden md:block font-hype text-lg tracking-widest text-white/30 hover:text-neon-cyan transition-colors">347-375-3948</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative pt-36 pb-16 overflow-hidden">
+        <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-neon-pink/15 rounded-full blur-[140px] animate-blob pointer-events-none"></div>
+        <div class="absolute top-0 right-1/4 w-[400px] h-[400px] bg-neon-cyan/10 rounded-full blur-[120px] animate-blob2 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-deep-900 pointer-events-none"></div>
+        <div class="relative z-10 text-center px-4">
+            <p class="font-hype text-sm tracking-[.4em] text-neon-pink mb-3">— SKIP THE LINE —</p>
+            <h1 class="font-display text-6xl md:text-9xl text-white leading-none">ORDER<br><span class="text-neon-pink glow-pink">ONLINE</span></h1>
+            <p class="font-body text-white/40 mt-4 text-lg">Pick your flavors · Choose pickup or delivery · Pay via Square</p>
+        </div>
+    </header>
+
+    <!-- ORDER FORM -->
+    <main class="max-w-[860px] mx-auto px-4 sm:px-6 lg:px-8 pb-32">
+
+        <form id="order-form" class="space-y-12">
+
+            <!-- Step 1: Flavors -->
+            <div class="reveal">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-neon-pink/10 border border-neon-pink/30 flex items-center justify-center font-hype text-xl text-neon-pink">1</div>
+                    <p class="font-hype text-2xl tracking-widest text-white">PICK YOUR FLAVORS</p>
+                </div>
+                <div class="divider mb-8"></div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="flavor-grid"></div>
+
+                <!-- Funditas -->
+                <div class="mt-4 glass-card rounded-2xl p-5 flex items-center justify-between">
+                    <div>
+                        <p class="font-hype text-xl tracking-widest text-white">HELADOS DE FUNDITAS</p>
+                        <p class="font-body text-sm text-white/40 mt-1">$3 each &nbsp;·&nbsp; 2 for $5</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button type="button" onclick="adjustQty('funditas',-1)" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-2xl">−</button>
+                        <span id="qty-funditas" class="font-hype text-2xl text-white w-8 text-center">0</span>
+                        <button type="button" onclick="adjustQty('funditas',1)" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-2xl">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Pickup or Delivery -->
+            <div class="reveal reveal-delay-1">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-neon-cyan/10 border border-neon-cyan/30 flex items-center justify-center font-hype text-xl text-neon-cyan">2</div>
+                    <p class="font-hype text-2xl tracking-widest text-white">PICKUP OR DELIVERY</p>
+                </div>
+                <div class="divider mb-8"></div>
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="button" onclick="setOrderType('pickup')" id="btn-pickup" class="glass-card rounded-2xl p-8 text-center border-2 border-transparent transition-all duration-300">
+                        <i class="ph-fill ph-storefront text-5xl text-white/40 mb-4 block"></i>
+                        <p class="font-hype text-2xl tracking-widest text-white">PICKUP</p>
+                        <p class="font-body text-sm text-white/30 mt-2">Bronx, NYC</p>
+                    </button>
+                    <button type="button" onclick="setOrderType('delivery')" id="btn-delivery" class="glass-card rounded-2xl p-8 text-center border-2 border-transparent transition-all duration-300">
+                        <i class="ph-fill ph-motorcycle text-5xl text-white/40 mb-4 block"></i>
+                        <p class="font-hype text-2xl tracking-widest text-white">DELIVERY</p>
+                        <p class="font-body text-sm text-white/30 mt-2">Bronx & Uptown Manhattan</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Your Info -->
+            <div class="reveal reveal-delay-2">
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="w-10 h-10 rounded-full bg-neon-lime/10 border border-neon-lime/30 flex items-center justify-center font-hype text-xl text-neon-lime">3</div>
+                    <p class="font-hype text-2xl tracking-widest text-white">YOUR INFO</p>
+                </div>
+                <div class="divider mb-8"></div>
+                <div class="space-y-4">
+                    <input type="text"  id="input-name"    placeholder="FULL NAME"           class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors">
+                    <input type="tel"   id="input-phone"   placeholder="PHONE NUMBER"        class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors">
+                    <div id="address-field" class="hidden">
+                        <input type="text" id="input-address" placeholder="DELIVERY ADDRESS" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors">
+                    </div>
+                    <textarea id="input-notes" placeholder="SPECIAL NOTES (OPTIONAL)" rows="3" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-4 font-hype text-lg tracking-widest text-white placeholder-white/20 focus:outline-none focus:border-neon-pink transition-colors resize-none"></textarea>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="reveal reveal-delay-3 text-center pt-4">
+                <button type="submit" class="cta-pulse w-full sm:w-auto px-16 py-6 font-display text-5xl text-deep-900 bg-neon-pink hover:bg-white hover:text-neon-pink transition-all duration-300 rounded-sm">
+                    PLACE ORDER
+                </button>
+                <p class="font-body text-xs text-white/20 mt-4 uppercase tracking-widest">You'll complete payment securely via Square.</p>
+            </div>
+
+        </form>
+    </main>
+
+    <!-- CONFIRMATION MODAL -->
+    <div id="confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4" style="background:rgba(6,4,16,.95);backdrop-filter:blur(20px);">
+        <div class="glass-card rounded-3xl p-8 max-w-md w-full border border-neon-pink/20">
+            <div class="text-center mb-6">
+                <i class="ph-fill ph-check-circle text-6xl text-neon-lime mb-4 block"></i>
+                <h3 class="font-display text-4xl text-white">ORDER RECEIVED</h3>
+                <p class="font-body text-white/40 mt-2 text-sm">Review your order then complete payment below.</p>
+            </div>
+            <div id="order-summary" class="bg-white/5 rounded-2xl p-5 mb-6 space-y-2 font-body text-sm"></div>
+            <div class="space-y-3">
+                <a id="pay-square-btn" href="https://square.link/u/svMeAQ8W?src=sheet" target="_blank" class="block w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 rounded-xl">
+                    PAY WITH SQUARE
+                </a>
+                <a id="sms-order-btn" href="#" class="block w-full text-center py-3 font-hype text-lg tracking-widest text-white/50 hover:text-white border border-white/10 hover:border-white/30 rounded-xl transition-all">
+                    <i class="ph-fill ph-chat-circle mr-2"></i> SEND ORDER VIA TEXT
+                </a>
+                <button onclick="closeOrderModal()" class="block w-full text-center py-3 font-hype text-lg tracking-widest text-white/20 hover:text-white/50 transition-colors">
+                    CLOSE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-10 px-4 text-center">
+        <img src="logo.png" alt="Beba Slushie" class="h-12 w-auto opacity-50 mx-auto mb-4">
+        <p class="font-body text-xs text-white/20 uppercase tracking-[.2em]">© 2024 Beba Slushies. BX, NYC.</p>
+        <p class="font-body text-xs text-white/20 tracking-widest mt-2">Website designed by <a href="https://instagram.com/wemovenewyork" class="hover:text-neon-cyan transition-colors">@wemovenewyork</a></p>
+    </footer>
+
+    <script>
+        // Cursor
+        const cursor = document.getElementById('cursor');
+        const ring   = document.getElementById('cursor-ring');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = ring.style.left = e.clientX + 'px';
+            cursor.style.top  = ring.style.top  = e.clientY + 'px';
+        });
+
+        // Sticky nav
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ORDER FORM
+        const FLAVORS = [
+            { id: 'pina',   name: 'PIÑA PERREO',     hex: '#FF5E00' },
+            { id: 'mango',  name: 'MANGO MAMACITA',   hex: '#FFD700' },
+            { id: 'blue',   name: 'BLUE BANDIDA',     hex: '#00E5FF' },
+            { id: 'fresa',  name: 'FRESA FUEGO',      hex: '#FF2D95' },
+            { id: 'parcha', name: 'PARCHA PARTY',     hex: '#8B3FD9' },
+            { id: 'coco',   name: 'COCO LOCO',        hex: '#e8e8e8' },
+        ];
+        const qtys = {};
+        FLAVORS.forEach(f => qtys[f.id] = 0);
+        qtys['funditas'] = 0;
+        let orderType = null;
+
+        const flavorGrid = document.getElementById('flavor-grid');
+        FLAVORS.forEach(f => {
+            flavorGrid.insertAdjacentHTML('beforeend', `
+                <div class="glass-card rounded-2xl p-5 flex flex-col items-center gap-3 border-2 border-transparent transition-all duration-300" id="card-${f.id}">
+                    <p class="font-hype text-base tracking-widest text-white text-center leading-tight">${f.name}</p>
+                    <div class="w-10 h-1 rounded-full" style="background:${f.hex}"></div>
+                    <div class="flex items-center gap-3 mt-1">
+                        <button type="button" onclick="adjustQty('${f.id}',-1)" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-2xl">−</button>
+                        <span id="qty-${f.id}" class="font-hype text-2xl text-white w-8 text-center">0</span>
+                        <button type="button" onclick="adjustQty('${f.id}',1)" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-neon-cyan hover:text-neon-cyan transition-colors font-hype text-2xl">+</button>
+                    </div>
+                </div>`);
+        });
+
+        function adjustQty(id, delta) {
+            qtys[id] = Math.max(0, qtys[id] + delta);
+            document.getElementById('qty-' + id).textContent = qtys[id];
+            const card = document.getElementById('card-' + id);
+            if (card) card.style.borderColor = qtys[id] > 0 ? 'rgba(255,45,149,.4)' : 'transparent';
+        }
+
+        function setOrderType(type) {
+            orderType = type;
+            document.getElementById('btn-pickup').style.borderColor  = type === 'pickup'   ? '#FF2D95' : 'transparent';
+            document.getElementById('btn-delivery').style.borderColor = type === 'delivery' ? '#00E5FF' : 'transparent';
+            document.getElementById('address-field').classList.toggle('hidden', type !== 'delivery');
+        }
+
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name    = document.getElementById('input-name').value.trim();
+            const phone   = document.getElementById('input-phone').value.trim();
+            const address = document.getElementById('input-address').value.trim();
+            const notes   = document.getElementById('input-notes').value.trim();
+
+            const totalItems = Object.values(qtys).reduce((a,b) => a+b, 0);
+            if (totalItems === 0)                         { alert('Please select at least one item.');      return; }
+            if (!orderType)                               { alert('Please select Pickup or Delivery.');     return; }
+            if (!name)                                    { alert('Please enter your name.');               return; }
+            if (!phone)                                   { alert('Please enter your phone number.');       return; }
+            if (orderType === 'delivery' && !address)     { alert('Please enter your delivery address.');  return; }
+
+            const items = [];
+            FLAVORS.forEach(f => { if (qtys[f.id] > 0) items.push(f.name + ' x' + qtys[f.id]); });
+            if (qtys.funditas > 0) items.push('HELADOS DE FUNDITAS x' + qtys.funditas);
+
+            document.getElementById('order-summary').innerHTML = `
+                <div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Items</span><span class="text-white text-right">${items.join(', ')}</span></div>
+                <div class="flex justify-between"><span class="text-white/40">Type</span><span class="text-white">${orderType.toUpperCase()}</span></div>
+                <div class="flex justify-between"><span class="text-white/40">Name</span><span class="text-white">${name}</span></div>
+                <div class="flex justify-between"><span class="text-white/40">Phone</span><span class="text-white">${phone}</span></div>
+                ${address ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Address</span><span class="text-white text-right">${address}</span></div>` : ''}
+                ${notes   ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Notes</span><span class="text-white text-right">${notes}</span></div>` : ''}
+            `;
+
+            let smsBody = `NEW BEBA SLUSHIE ORDER\nItems: ${items.join(', ')}\nType: ${orderType.toUpperCase()}\nName: ${name}\nPhone: ${phone}`;
+            if (address) smsBody += `\nAddress: ${address}`;
+            if (notes)   smsBody += `\nNotes: ${notes}`;
+            document.getElementById('sms-order-btn').href = `sms:3473753948?body=${encodeURIComponent(smsBody)}`;
+
+            const modal = document.getElementById('confirm-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        });
+
+        function closeOrderModal() {
+            const modal = document.getElementById('confirm-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+</body>
+</html>
