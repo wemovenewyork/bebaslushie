@@ -139,6 +139,7 @@
                     <a href="#how"       class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">HOW IT WORKS<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-lime scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
                     <a href="#catering"  class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">CATERING<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-violet scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
                     <a href="#findus"    class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">FIND US<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-orange scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
+                    <a href="#loyalty"   class="font-hype text-lg tracking-widest text-white/50 hover:text-white transition-colors relative group">LOYALTY<span class="absolute -bottom-1 left-0 w-full h-px bg-neon-yellow scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span></a>
                 </div>
 
                 <div class="flex items-center gap-3">
@@ -159,6 +160,7 @@
                 <a href="#how"      onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-lime transition-colors">HOW IT WORKS</a>
                 <a href="#catering" onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-violet transition-colors">CATERING</a>
                 <a href="#findus"   onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-orange transition-colors">FIND US</a>
+                <a href="#loyalty"  onclick="closeMobileMenu()" class="font-hype text-2xl tracking-widest text-white/70 hover:text-neon-yellow transition-colors">LOYALTY</a>
                 <div class="divider my-2"></div>
                 <a href="tel:3473753948" class="flex items-center gap-3 font-hype text-2xl tracking-widest text-neon-cyan">
                     <i class="ph-fill ph-phone text-xl"></i> 347-375-3948
@@ -731,6 +733,111 @@
 
             </div>
         </div>
+    </section>
+
+    <!-- ── LOYALTY ── -->
+    <section id="loyalty" class="py-24 relative overflow-hidden">
+        <div class="wave-sep top"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg-loy" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#FFD700" stop-opacity=".5"/><stop offset="70%" stop-color="#FF2D95" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C180,6 360,30 540,18 C720,6 900,30 1080,18 C1260,6 1440,30 1440,18" fill="none" stroke="url(#wg-loy)" stroke-width="1.5"/></svg></div>
+        <div class="absolute inset-0 bg-gradient-to-b from-deep-900 via-deep-800 to-deep-900 pointer-events-none"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-neon-yellow/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-[900px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="text-center mb-16 reveal">
+                <p class="font-hype text-sm tracking-[.4em] text-neon-yellow mb-3">— REGULARS GET REWARDED —</p>
+                <h2 class="font-display text-5xl md:text-7xl text-white leading-none">BEBA<br><span class="text-neon-yellow" style="text-shadow:0 0 20px rgba(255,215,0,.7),0 0 50px rgba(255,215,0,.3)">REWARDS</span></h2>
+                <p class="font-body text-white/40 mt-4 max-w-md mx-auto leading-relaxed">Buy 10 slushies, get one FREE. Every order through Square counts automatically.</p>
+            </div>
+
+            <!-- Punch Card -->
+            <div class="glass-card rounded-3xl p-8 md:p-10 mb-10 reveal reveal-delay-1 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-neon-yellow/5 rounded-full blur-[80px] pointer-events-none"></div>
+
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+                    <div>
+                        <p class="font-hype text-2xl tracking-widest text-white">YOUR PUNCH CARD</p>
+                        <p class="font-body text-sm text-white/30 mt-1">10 punches = 1 free slushie</p>
+                    </div>
+                    <div class="bg-neon-yellow/10 border border-neon-yellow/20 rounded-xl px-5 py-2">
+                        <p class="font-hype text-lg tracking-widest text-neon-yellow">COMING SOON</p>
+                    </div>
+                </div>
+
+                <!-- 10 punch slots -->
+                <div class="grid grid-cols-5 gap-3 mb-6">
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative group">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">1</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">2</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">3</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">4</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">5</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">6</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">7</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">8</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-dashed border-neon-yellow/30 flex items-center justify-center bg-neon-yellow/5 relative">
+                        <i class="ph-fill ph-ice-cream text-3xl text-neon-yellow/30"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-deep-900 border border-neon-yellow/30 flex items-center justify-center font-hype text-xs text-neon-yellow/50">9</span>
+                    </div>
+                    <div class="aspect-square rounded-2xl border-2 border-2 border-neon-pink/60 flex items-center justify-center bg-neon-pink/10 relative">
+                        <i class="ph-fill ph-gift text-3xl text-neon-pink"></i>
+                        <span class="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-neon-pink flex items-center justify-center font-hype text-xs text-deep-900">🎉</span>
+                    </div>
+                </div>
+
+                <p class="font-body text-xs text-white/20 uppercase tracking-widest text-center">Slot 10 = your free slushie 🧊</p>
+            </div>
+
+            <!-- How it works -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 reveal reveal-delay-2">
+                <div class="glass-card rounded-2xl p-6 text-center">
+                    <i class="ph-fill ph-credit-card text-4xl text-neon-yellow mb-4 block"></i>
+                    <p class="font-hype text-lg tracking-widest text-white mb-2">PAY VIA SQUARE</p>
+                    <p class="font-body text-sm text-white/40 leading-relaxed">Every purchase through Square is automatically tracked.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center">
+                    <i class="ph-fill ph-seal-check text-4xl text-neon-lime mb-4 block"></i>
+                    <p class="font-hype text-lg tracking-widest text-white mb-2">EARN PUNCHES</p>
+                    <p class="font-body text-sm text-white/40 leading-relaxed">Each order earns a punch. Watch your card fill up.</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center">
+                    <i class="ph-fill ph-gift text-4xl text-neon-pink mb-4 block"></i>
+                    <p class="font-hype text-lg tracking-widest text-white mb-2">GET ONE FREE</p>
+                    <p class="font-body text-sm text-white/40 leading-relaxed">Hit 10 punches and your next slushie is on us.</p>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center reveal reveal-delay-3">
+                <a href="#order-online" class="inline-flex items-center gap-3 font-hype text-2xl tracking-widest text-deep-900 bg-neon-yellow px-10 py-4 hover:bg-white transition-all duration-300 hover:-translate-y-0.5" style="hover:box-shadow:0 0 30px rgba(255,215,0,.5)">
+                    <i class="ph-fill ph-lightning text-2xl"></i> START EARNING NOW
+                </a>
+                <p class="font-body text-xs text-white/20 mt-4 uppercase tracking-widest">Powered by Square Loyalty — launching soon</p>
+            </div>
+
+        </div>
+        <div class="wave-sep bot"><svg viewBox="0 0 1440 36" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="wg-loy2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="transparent"/><stop offset="30%" stop-color="#FF2D95" stop-opacity=".5"/><stop offset="70%" stop-color="#FFD700" stop-opacity=".5"/><stop offset="100%" stop-color="transparent"/></linearGradient></defs><path d="M0,18 C180,30 360,6 540,18 C720,30 900,6 1080,18 C1260,30 1440,6 1440,18" fill="none" stroke="url(#wg-loy2)" stroke-width="1.5"/></svg></div>
     </section>
 
     <!-- ── ORDER ONLINE ── -->
