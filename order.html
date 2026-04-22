@@ -95,7 +95,7 @@
                     <a href="index.html" class="font-hype text-lg tracking-widest text-white/40 hover:text-white transition-colors flex items-center gap-2">
                         <i class="ph ph-arrow-left"></i> BACK TO HOME
                     </a>
-                    <a href="tel:3473753948" class="hidden md:block font-hype text-lg tracking-widest text-white/30 hover:text-neon-cyan transition-colors">347-375-3948</a>
+                    <a href="tel:3473847582" class="hidden md:block font-hype text-lg tracking-widest text-white/30 hover:text-neon-cyan transition-colors">347-384-7582</a>
                 </div>
             </div>
         </div>
@@ -250,12 +250,22 @@
         // ORDER FORM
         // TODO: confirm actual prices before deploy
         const FLAVORS = [
-            { id: 'pina',   name: 'PIÑA PERREO',     hex: '#FF5E00', price: '$8' },
-            { id: 'mango',  name: 'MANGO MAMACITA',   hex: '#FFD700', price: '$8' },
-            { id: 'blue',   name: 'BLUE BANDIDA',     hex: '#00E5FF', price: '$8' },
-            { id: 'fresa',  name: 'FRESA FUEGO',      hex: '#FF2D95', price: '$8' },
-            { id: 'parcha', name: 'PARCHA PARTY',     hex: '#8B3FD9', price: '$8' },
-            { id: 'coco',   name: 'COCO LOCO',        hex: '#e8e8e8', price: '$8' },
+            { id: 'pina',        name: 'PIÑA PERREO',            hex: '#FF5E00', price: '$12' },
+            { id: 'mango',       name: 'MANGO MAMACITA',          hex: '#FFD700', price: '$12' },
+            { id: 'blue',        name: 'BLUE BANDIDA',            hex: '#00E5FF', price: '$12' },
+            { id: 'fresa',       name: 'FRESA FUEGO',             hex: '#FF2D95', price: '$12' },
+            { id: 'parcha',      name: 'PARCHA PARTY',            hex: '#8B3FD9', price: '$12' },
+            { id: 'coco',        name: 'COCO LOCO',               hex: '#e8e8e8', price: '$12' },
+            { id: 'marg',        name: 'MARGARITA',               hex: '#C4FF00', price: '$12' },
+            { id: 'strawmarg',   name: 'STRAWBERRY MARGARITA',    hex: '#FF6B9D', price: '$12' },
+            { id: 'sourapple',   name: 'SOUR APPLE MARGARITA',    hex: '#39FF14', price: '$12' },
+            { id: 'bluemarg',    name: 'BLUE RASPBERRY MARGARITA',hex: '#00CFFF', price: '$12' },
+            { id: 'pinemarg',    name: 'PINEAPPLE MARGARITA',     hex: '#FFE033', price: '$12' },
+            { id: 'tropicalmarg',name: 'TROPICAL PUNCH MARGARITA',hex: '#FF7A00', price: '$12' },
+            { id: 'strawcolada', name: 'STRAWBERRY COLADA',       hex: '#FF3D8B', price: '$12' },
+            { id: 'bahama',      name: 'BAHAMA MAMA',             hex: '#FF8C42', price: '$12' },
+            { id: 'bluehaw',     name: 'BLUE HAWAIIAN',           hex: '#00B4D8', price: '$12' },
+            { id: 'malibu',      name: 'MALIBU SUNRISE',          hex: '#BF5FFF', price: '$12' },
         ];
         const qtys = {};
         FLAVORS.forEach(f => qtys[f.id] = 0);
@@ -322,7 +332,7 @@
             let smsBody = `NEW BEBA SLUSHIE ORDER\nItems: ${items.join(', ')}\nType: ${orderType.toUpperCase()}\nName: ${name}\nPhone: ${phone}`;
             if (address) smsBody += `\nAddress: ${address}`;
             if (notes)   smsBody += `\nNotes: ${notes}`;
-            document.getElementById('sms-order-btn').href = `sms:3473753948?body=${encodeURIComponent(smsBody)}`;
+            document.getElementById('sms-order-btn').href = `sms:3473847582?body=${encodeURIComponent(smsBody)}`;
 
             const modal = document.getElementById('confirm-modal');
             modal.classList.remove('hidden');
