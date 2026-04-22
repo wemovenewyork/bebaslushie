@@ -17,7 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Luckiest+Guy&family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 
     <script>
@@ -202,10 +202,10 @@
             </div>
             <div id="order-summary" class="bg-white/5 rounded-2xl p-5 mb-6 space-y-2 font-body text-sm"></div>
             <div class="space-y-3">
-                <a id="pay-square-btn" href="https://square.link/u/svMeAQ8W?src=sheet" target="_blank" class="block w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 rounded-xl">
+                <a id="pay-square-btn" href="https://square.link/u/svMeAQ8W?src=sheet" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-pink hover:bg-white transition-all duration-300 rounded-xl">
                     PAY WITH SQUARE
                 </a>
-                <a href="https://cash.app/$BebaSlushies809" target="_blank" class="block w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-lime hover:bg-white transition-all duration-300 rounded-xl">
+                <a href="https://cash.app/$BebaSlushies809" target="_blank" rel="noopener noreferrer" class="block w-full text-center py-4 font-hype text-2xl tracking-widest text-deep-900 bg-neon-lime hover:bg-white transition-all duration-300 rounded-xl">
                     PAY WITH CASH APP
                 </a>
                 <p class="font-body text-xs text-white/30 text-center leading-relaxed">Loyalty points only apply to Square purchases.</p>
@@ -320,13 +320,14 @@
             FLAVORS.forEach(f => { if (qtys[f.id] > 0) items.push(f.name + ' x' + qtys[f.id]); });
             if (qtys.funditas > 0) items.push('HELADOS DE FUNDITAS x' + qtys.funditas);
 
+            const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
             document.getElementById('order-summary').innerHTML = `
-                <div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Items</span><span class="text-white text-right">${items.join(', ')}</span></div>
-                <div class="flex justify-between"><span class="text-white/40">Type</span><span class="text-white">${orderType.toUpperCase()}</span></div>
-                <div class="flex justify-between"><span class="text-white/40">Name</span><span class="text-white">${name}</span></div>
-                <div class="flex justify-between"><span class="text-white/40">Phone</span><span class="text-white">${phone}</span></div>
-                ${address ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Address</span><span class="text-white text-right">${address}</span></div>` : ''}
-                ${notes   ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Notes</span><span class="text-white text-right">${notes}</span></div>` : ''}
+                <div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Items</span><span class="text-white text-right">${items.map(esc).join(', ')}</span></div>
+                <div class="flex justify-between"><span class="text-white/40">Type</span><span class="text-white">${esc(orderType.toUpperCase())}</span></div>
+                <div class="flex justify-between"><span class="text-white/40">Name</span><span class="text-white">${esc(name)}</span></div>
+                <div class="flex justify-between"><span class="text-white/40">Phone</span><span class="text-white">${esc(phone)}</span></div>
+                ${address ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Address</span><span class="text-white text-right">${esc(address)}</span></div>` : ''}
+                ${notes   ? `<div class="flex justify-between gap-4"><span class="text-white/40 shrink-0">Notes</span><span class="text-white text-right">${esc(notes)}</span></div>` : ''}
             `;
 
             let smsBody = `NEW BEBA SLUSHIE ORDER\nItems: ${items.join(', ')}\nType: ${orderType.toUpperCase()}\nName: ${name}\nPhone: ${phone}`;
