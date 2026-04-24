@@ -262,6 +262,7 @@
                 <!-- Piña Perreo -->
                 <div class="glass-card gradient-border rounded-2xl p-8 relative overflow-hidden h-[380px] flex flex-col justify-between reveal reveal-delay-1">
                     <div class="absolute top-0 right-0 w-56 h-56 bg-neon-orange/10 rounded-full blur-[80px] pointer-events-none"></div>
+                    <img src="flyer-pina-colada.png" alt="Piña Colada slushie" class="absolute bottom-0 right-0 h-full w-auto max-w-[55%] object-cover opacity-40 pointer-events-none rounded-br-2xl">
                     <div class="relative z-10">
                         <div class="flex justify-between items-start mb-6">
                             <h3 class="font-display text-4xl text-white leading-tight">PIÑA<br>PERREO</h3>
@@ -275,7 +276,6 @@
                         </ul>
                         <p class="font-hype text-2xl text-neon-orange tracking-widest mt-5">$12</p>
                     </div>
-                    <div class="absolute -bottom-8 -right-8 opacity-5 pointer-events-none"><i class="ph-fill ph-drop text-[220px] text-neon-orange"></i></div>
                 </div>
 
                 <!-- Mango Mamacita -->
@@ -378,14 +378,38 @@
             <!-- Also Available -->
             <div class="mt-14 reveal">
                 <p class="font-hype text-sm tracking-[.4em] text-white/30 mb-6">— ALSO AVAILABLE —</p>
+
+                <!-- Featured image cards for flavors with flyers -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
+                    <div class="glass-card rounded-2xl overflow-hidden relative group">
+                        <img src="flyer-regular-margarita.png" alt="Regular Margarita slushie" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-deep-900 to-transparent px-5 py-4">
+                            <p class="font-hype text-xl tracking-widest text-white">MARGARITA</p>
+                            <p class="font-hype text-base text-neon-lime">$12</p>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl overflow-hidden relative group">
+                        <img src="flyer-strawberry-margarita.png" alt="Strawberry Margarita slushie" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-deep-900 to-transparent px-5 py-4">
+                            <p class="font-hype text-xl tracking-widest text-white">STRAWBERRY MARGARITA</p>
+                            <p class="font-hype text-base text-neon-pink">$12</p>
+                        </div>
+                    </div>
+                    <div class="glass-card rounded-2xl overflow-hidden relative group">
+                        <img src="flyer-strawberry-colada.png" alt="Strawberry Colada slushie" class="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-deep-900 to-transparent px-5 py-4">
+                            <p class="font-hype text-xl tracking-widest text-white">STRAWBERRY COLADA</p>
+                            <p class="font-hype text-base text-neon-pink">$12</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Remaining flavors as pills -->
                 <div class="flex flex-wrap gap-3">
-                    <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-lime shrink-0"></span><span class="font-hype text-base tracking-widest text-white">MARGARITA</span><span class="font-hype text-sm text-neon-lime ml-1">$12</span></div>
-                    <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-pink shrink-0"></span><span class="font-hype text-base tracking-widest text-white">STRAWBERRY MARGARITA</span><span class="font-hype text-sm text-neon-pink ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-lime shrink-0"></span><span class="font-hype text-base tracking-widest text-white">SOUR APPLE MARGARITA</span><span class="font-hype text-sm text-neon-lime ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-cyan shrink-0"></span><span class="font-hype text-base tracking-widest text-white">BLUE RASPBERRY MARGARITA</span><span class="font-hype text-sm text-neon-cyan ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-yellow shrink-0"></span><span class="font-hype text-base tracking-widest text-white">PINEAPPLE MARGARITA</span><span class="font-hype text-sm text-neon-yellow ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-orange shrink-0"></span><span class="font-hype text-base tracking-widest text-white">TROPICAL PUNCH MARGARITA</span><span class="font-hype text-sm text-neon-orange ml-1">$12</span></div>
-                    <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-pink shrink-0"></span><span class="font-hype text-base tracking-widest text-white">STRAWBERRY COLADA</span><span class="font-hype text-sm text-neon-pink ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-orange shrink-0"></span><span class="font-hype text-base tracking-widest text-white">BAHAMA MAMA</span><span class="font-hype text-sm text-neon-orange ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-cyan shrink-0"></span><span class="font-hype text-base tracking-widest text-white">BLUE HAWAIIAN</span><span class="font-hype text-sm text-neon-cyan ml-1">$12</span></div>
                     <div class="glass-card rounded-full px-6 py-3 flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-neon-violet shrink-0"></span><span class="font-hype text-base tracking-widest text-white">MALIBU SUNRISE</span><span class="font-hype text-sm text-neon-violet ml-1">$12</span></div>
